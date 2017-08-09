@@ -84,20 +84,20 @@ class DBconn_ui(QtGui.QDockWidget, dbconn.Ui_dbconn_dockable):
 
 	#methods for signals. i bet this could have all been done inline with lambda functions.
 	# self.conn_host_lineEdit.connect(lambda s:self.db.socialtable=s) 
-	def set_host(self,host):self.db.host = host
-	def set_port(self,port):self.db.port = port
-	def set_userfilename(self,userinfo):self.db.userinfo = userinfo
-	def set_dbname(self,dbname):self.db.dbname = dbname
+	def set_host(self,host):self.db.host = str(host)
+	def set_port(self,port):self.db.port = str(port)
+	def set_userfilename(self,userinfo):self.db.userinfo = str(userinfo)
+	def set_dbname(self,dbname):self.db.dbname = str(dbname)
 
-	def set_socialtable(self,s): self.db.socialtable = s
-	def set_socialdata(self,s): self.db.socialdata = s
-	def set_socialtime(self,s): self.db.socialtime = s
-	def set_socialuser(self,s): self.db.socialusername = s
-	def set_socialgeom(self,s): self.db.socialgeom = s
+	def set_socialtable(self,s): self.db.socialtable = str(s)
+	def set_socialdata(self,s): self.db.socialdata = str(s)
+	def set_socialtime(self,s): self.db.socialtime = str(s)
+	def set_socialuser(self,s): self.db.socialusername = str(s)
+	def set_socialgeom(self,s): self.db.socialgeom = str(s)
 
-	def set_areatable(self,a):self.db.areatable = a
-	def set_arealabel(self,a):self.db.arealabel = a
-	def set_areageom(self,a):self.db.areageom = a
+	def set_areatable(self,a):self.db.areatable = str(a)
+	def set_arealabel(self,a):self.db.arealabel = str(a)
+	def set_areageom(self,a):self.db.areageom = str(a)
 
 
 	def load_config(self):
@@ -124,7 +124,7 @@ class DBconn_ui(QtGui.QDockWidget, dbconn.Ui_dbconn_dockable):
 	def save_config(self):
 		print 'save btn pressed'
 		print 'self.db.host: '+self.db.host #testing
-		#db.json_write(solf.config_filename_lineEdit.test())
+		self.db.json_write(self.config_filename_lineEdit.text())
 
 
 class Wordnet_ui(QtGui.QDockWidget, wordnet.Ui_wordnet_dockable):

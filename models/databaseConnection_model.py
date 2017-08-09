@@ -33,11 +33,11 @@ class DatabaseConnection(object):
 		self.socialtable=d['socialtable']
 		self.socialdata=d['socialdata']
 		self.socialgeom=d['socialgeom']
-		self.socialusername=d['host']
-		self.socialtime=d['host']
+		self.socialusername=d['socialusername']
+		self.socialtime=d['socialtime']
 		self.areatable=d['areatable']
 		self.areageom=d['areageom']
-		self.arealabel=d['areaname']
+		self.arealabel=d['arealabel']
 
 	
 	# --------------------------------
@@ -48,7 +48,7 @@ class DatabaseConnection(object):
 	# --------------------------------
 	def json_write(self,filename):
 		with open(filename,'w') as outfile:
-			json.dump(get_as_dictionary(),outfile,ensure_ascii=False)
+			json.dump(self.get_as_dictionary(),outfile,ensure_ascii=False)
 
 	# --------------------------------
 	# method:     get_as_dictionary
@@ -65,8 +65,10 @@ class DatabaseConnection(object):
 			"socialtable":self.socialtable,
 			"socialdata":self.socialdata,
 			"socialgeom":self.socialgeom,
-			"areatable":self.boundarytable,
-			"areageom":self.geom,
-			"areaname":self.boundaryname
+			"socialtime":self.socialtime,
+			"socialusername":self.socialusername,
+			"areatable":self.areatable,
+			"areageom":self.areageom,
+			"arealabel":self.arealabel
 			}
 
