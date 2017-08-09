@@ -11,9 +11,9 @@ class DatabaseConnection(object):
 		self.socialgeom=''
 		self.socialusername=''
 		self.socialtime=''
-		self.boundarytable=''
-		self.boundarygeom=''
-		self.boundarylabel=''		
+		self.areatable=''
+		self.areageom=''
+		self.arealabel=''		
 
 	# --------------------------------
 	# method:     json_load
@@ -35,9 +35,9 @@ class DatabaseConnection(object):
 		self.socialgeom=d['socialgeom']
 		self.socialusername=d['host']
 		self.socialtime=d['host']
-		self.boundarytable=d['boundarytable']
-		self.boundarygeom=d['boundarygeom']
-		self.boundarylabel=d['boundaryname']
+		self.areatable=d['areatable']
+		self.areageom=d['areageom']
+		self.arealabel=d['areaname']
 
 	
 	# --------------------------------
@@ -65,8 +65,8 @@ class DatabaseConnection(object):
 			"socialtable":self.socialtable,
 			"socialdata":self.socialdata,
 			"socialgeom":self.socialgeom,
-			"boundarytable":self.boundarytable,
-			"boundarygeom":self.geom,
-			"boundaryname":self.boundaryname
+			"areatable":self.boundarytable,
+			"areageom":self.geom,
+			"areaname":self.boundaryname
 			}
 
