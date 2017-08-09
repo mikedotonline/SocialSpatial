@@ -64,32 +64,51 @@ class DBconn_ui(QtGui.QDockWidget, dbconn.Ui_dbconn_dockable):
 
 		self.config_LoadFile_pushButton.clicked.connect(self.load_config)
 		self.config_saveFile_pushButton.clicked.connect(self.save_config)
+		db = db_model.DatabaseConnection()		
+		db.host = self.conn_host_lineEdit.Text()
+		db.port = self.conn_port_lineEdit.Text()
+		db.userinfo = self.conn_userfilename_lineEdit.Text()
+		db.dbname = self.conn_dbname_lineEdit.Text()
+
+		db.socialTable = self.social_table_lineEdit.Text()
+		db.socialdata = self.social_data_lineEdit.Text()
+		db.socialtime = self.social_time_lineEdit.Text()
+		db.socialusername = self.social_user_lineEdit.Text()
+		db.socialgeom = self.social_geom_lineEdit.Text()
+
+		db.boundarytable = self.area_table_lineEdit.Text()
+		db.boundarlabel = self.area_label_lineEdit.Text()
+		db.boundarygeom = self.area_geom_lineEdit.Text()
+
+
+
 
 
 	def load_config(self):
-		print 'load btn pressed'
-		db = db_model.DatabaseConnection()
+		print 'load btn pressed'		
 		db.json_load(self.config_filename_lineEdit.text())
 
-		self.conn_host_lineEdit.setText(db.host)
-		self.conn_port_lineEdit.setText(db.port)
-		self.conn_userfilename_lineEdit.setText(db.userinfo)
-		self.conn_dbname_lineEdit.setText(db.dbname)
+		# self.conn_host_lineEdit.setText(db.host)
+		# self.conn_port_lineEdit.setText(db.port)
+		# self.conn_userfilename_lineEdit.setText(db.userinfo)
+		# self.conn_dbname_lineEdit.setText(db.dbname)
 
-		self.social_table_lineEdit.setText(db.socialtable)
-		self.social_data_lineEdit.setText(db.socialdata)
-		self.social_time_lineEdit.setText(db.socialtime)
-		self.social_user_lineEdit.setText(db.socialusername)
-		self.social_geom_lineEdit.setText(db.socialgeom)
+		# self.social_table_lineEdit.setText(db.socialtable)
+		# self.social_data_lineEdit.setText(db.socialdata)
+		# self.social_time_lineEdit.setText(db.socialtime)
+		# self.social_user_lineEdit.setText(db.socialusername)
+		# self.social_geom_lineEdit.setText(db.socialgeom)
 
-		self.area_table_lineEdit.setText(db.boundarytable)
-		self.area_label_lineEdit.setText(db.boundarylabel)
-		self.area_geom_lineEdit.setText(db.boundarygeom)
+		# self.area_table_lineEdit.setText(db.boundarytable)
+		# self.area_label_lineEdit.setText(db.boundarylabel)
+		# self.area_geom_lineEdit.setText(db.boundarygeom)
 
 
 
 	def save_config(self):
 		print 'save btn pressed'
+		db.json_write(solf.config_filename_lineEdit.test())
+
 
 class Wordnet_ui(QtGui.QDockWidget, wordnet.Ui_wordnet_dockable):
 	def __init__(self,parent=None):
