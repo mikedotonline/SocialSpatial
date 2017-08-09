@@ -11,7 +11,7 @@ import models.databaseConnection_model as db_model
 import models.GoogleKnowledgeGraph
 import models.WordNet
 
-class WordExploreApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
+class SocialSpatialeApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 	def __init__(self, parent=None):
 		super(self.__class__, self).__init__(parent)
 		self.setupUi(self)
@@ -108,7 +108,7 @@ class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
 
 def main():
 	app = QtGui.QApplication(sys.argv)
-	form = WordExploreApp()
+	form = SocialSpatialApp()
 	form.show()    
 	
 	app.exec_()
