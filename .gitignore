@@ -1,0 +1,9 @@
+data/k.key
+data/db_defaultinfo.json
+data/userinfo.json
+models/databaseConnection_model.pyc
+models/GoogleKnowledgeGraph.pyc
+*.pyc
+old/word-explore.ui
+old/wordexplore.py
+old/wordexplore_ui.py

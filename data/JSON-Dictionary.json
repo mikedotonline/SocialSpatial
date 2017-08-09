@@ -1,0 +1,941 @@
+{
+  "obesity": [
+    "unhealthy",
+    "medical"
+  ],
+  "obese": [
+    "unhealthy",
+    "medical"
+  ],
+  "unhealthy": [
+    "unhealthy",
+    "medical"
+  ],
+  "junk food": [
+    "unhealthy",
+    "food",
+    "candy"
+  ],
+  "foodcoma": [
+    "unhealthy",
+    "food",
+    "hashtag"
+  ],
+  "overweight": [
+    "unhealthy",
+    "medical"
+  ],
+  "bloated": [
+    "unhealthy",
+    "medical"
+  ],
+  "fatty": [
+    "unhealthy",
+    "hashtag"
+  ],
+  "sugartax": [
+    "unhealthy",
+    "hashtag"
+  ],
+  "cholesterol": [
+    "unhealthy",
+    "medical"
+  ],
+  "lethargic": [
+    "unhealthy",
+    "medical"
+  ],
+  "couchpotato": [
+    "unhealthy",
+    "hashtag"
+  ],
+  "sugar": [
+    "unhealthy",
+    "food",
+    "candy"
+  ],
+  "fattest": [
+    "unhealthy"
+  ],
+  "fastfood": [
+    "unhealthy"
+  ],
+  "fast food": [
+    "unhealthy"
+  ],
+  "feel fat": [
+    "unhealthy"
+  ],
+  "bacon": [
+    "unhealthy",
+    "food"
+  ],
+  "burgers": [
+    "unhealthy",
+    "food"
+  ],
+  "sausage": [
+    "unhealthy",
+    "food"
+  ],
+  "kfc": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "mcdonalds": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "a&w": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "AandW": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "wendys": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "subway": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "timhortons": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "tim hortons": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "burgerking": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "burger king": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "taco bell": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "tacobell": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "dairyqueen": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "dairy queen": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "arbys": [
+    "unhealthy",
+    "company",
+    "brandname"
+  ],
+  "icecream": [
+    "unhealthy",
+    "food"
+  ],
+  "cola": [
+    "unhealthy",
+    "drink"
+  ],
+  "soda": [
+    "unhealthy",
+    "drink"
+  ],
+  "drpepper": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "dr pepper": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "vanilla-coke": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "dr. pepper": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "fresca": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "mello yello": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "mr pibb": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "mrpibb": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "pibb xtra": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "pepsi": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "mountaindew": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "rootbeer": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "7-up": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "canadadry": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "canada dry": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "orangecrush": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "creamsoda": [
+    "unhealthy",
+    "drink"
+  ],
+  "sunkist": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "vernors": [
+    "unhealthy",
+    "drink",
+    "brandname"
+  ],
+  "chickenwings": [
+    "unhealthy",
+    "food"
+  ],
+  "chicken wings": [
+    "unhealthy",
+    "food"
+  ],
+  "buffalowings": [
+    "unhealthy",
+    "food"
+  ],
+  "redbull": [
+    "unhealthy",
+    "company",
+    "drink",
+    "brandname"
+  ],
+  "red bull": [
+    "unhealthy",
+    "company",
+    "drink",
+    "brandname"
+  ],
+  "kitkat": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "kit kat": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "snickers": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "crunchie": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "3muskateers": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "candybar": [
+    "unhealthy",
+    "food",
+    "candy"
+  ],
+  "reeses": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "marsbar": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "fried": [
+    "unhealthy",
+    "food"
+  ],
+  "babyruth": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "candy": [
+    "unhealthy",
+    "food",
+    "candy"
+  ],
+  "frosting": [
+    "unhealthy",
+    "food",
+    "candy"
+  ],
+  "crispy crunch": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "crispycrunch": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "ohhenry": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "mrbig": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "mr big": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "coffeecrisp": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "smarties": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "oreo": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "aero": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "poprocks": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "pop rocks": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "pocky": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "jawbreaker": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "twizzler": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "skittles": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "tootsie roll": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "tootsieroll": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "jellybelly": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "jelly belly": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "jelly beans": [
+    "unhealthy",
+    "food",
+    "candy"
+  ],
+  "jellybean": [
+    "unhealthy",
+    "food",
+    "candy"
+  ],
+  "butterfinger": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "twix": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "hershey": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "gummi": [
+    "unhealthy",
+    "food",
+    "candy"
+  ],
+  "coffee crisp": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "oh henry": [
+    "unhealthy",
+    "food",
+    "candy",
+    "brandname"
+  ],
+  "fries": [
+    "unhealthy",
+    "food"
+  ],
+  "potato chips": [
+    "unhealthy",
+    "food"
+  ],
+  "butter": [
+    "unhealthy",
+    "food"
+  ],
+  "pizza": [
+    "unhealthy",
+    "food"
+  ],
+  "donut": [
+    "unhealthy",
+    "food"
+  ],
+  "fruitloops": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "fruit loops": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "frosted flakes": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "frostedflakes": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "pilsbury": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast"
+  ],
+  "poptarts": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast"
+  ],
+  "corn pops": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal",
+    "breakfast",
+    "cereal"
+  ],
+  "cornpops": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "trix": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "cinnamontoastcrunch": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "cinnamon toast crunch": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "cookiesncream": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "count chocula": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "countchocula": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "fruity pebbles": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "fruitypebbles": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "luckycharms": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "lucky charms": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "goldencrisp": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "golden crisp": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "cocoa puffs": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "captain crunch": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "frenchtoastcrunch": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "french toast crunch": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "captaincrunch": [
+    "unhealthy",
+    "food",
+    "breakfast",
+    "cereal",
+    "brandname"
+  ],
+  "applejacks": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "apple jacks": [
+    "unhealthy",
+    "food",
+    "brandname",
+    "breakfast",
+    "cereal"
+  ],
+  "nachos": [
+    "unhealthy",
+    "food"
+  ],
+  "poutine": [
+    "unhealthy",
+    "food"
+  ],
+  "mozerellasticks": [
+    "unhealthy",
+    "food"
+  ],
+  "mozerella sticks": [
+    "unhealthy",
+    "food"
+  ],
+  "corndog": [
+    "unhealthy",
+    "food"
+  ],
+  "corn dog": [
+    "unhealthy",
+    "food"
+  ],
+  "hotdog": [
+    "unhealthy",
+    "food"
+  ],
+  "hot dog": [
+    "unhealthy",
+    "food"
+  ],
+  "meatlover": [
+    "unhealthy",
+    "food"
+  ],
+  "cartems": [
+    "unhealthy",
+    "food",
+    "company"
+  ],
+  "japadog": [
+    "unhealthy",
+    "food",
+    "company",
+    "brandname"
+  ],
+  "hotchocolate": [
+    "unhealthy",
+    "food"
+  ],
+  "hot chocolate": [
+    "unhealthy",
+    "food"
+  ],
+  "belle patate": [
+    "unhealthy",
+    "food",
+    "company"
+  ],
+  "mmm": [
+    "unhealthy",
+    "hashtag"
+  ],
+  "mmmmm": [
+    "unhealthy",
+    "hashtag"
+  ],
+  "cream": [
+    "unhealthy",
+    "food"
+  ],
+  "craving": [
+    "unhealthy"
+  ],
+  "gravy": [
+    "unhealthy",
+    "food"
+  ],
+  "gastropost": [
+    "unhealthy",
+    "hashtag"
+  ],
+  "earnest": [
+    "unhealthy",
+    "food",
+    "company"
+  ],
+  "caramel": [
+    "unhealthy",
+    "food",
+    "candy"
+  ],
+  "sprinkles": [
+    "unhealthy",
+    "food",
+    "candy"
+  ],
+  "sauce": [
+    "unhealthy"
+  ],
+  "fondue": [
+    "unhealthy",
+    "food"
+  ],
+  "tart": [
+    "unhealthy",
+    "food"
+  ],
+  "pancakes": [
+    "unhealthy",
+    "food"
+  ],
+  "syrup": [
+    "unhealthy",
+    "food"
+  ],
+  "cotton candy": [
+    "unhealthy",
+    "food",
+    "candy"
+  ],
+  "bbq": [
+    "unhealthy"
+  ],
+  "croissant": [
+    "unhealthy",
+    "food"
+  ],
+  "gelateria": [
+    "unhealthy"
+  ],
+  "gelato": [
+    "unhealthy",
+    "food"
+  ],
+  "ramen": [
+    "unhealthy",
+    "food"
+  ],
+  "doughnut": [
+    "unhealthy",
+    "food"
+  ],
+  "macaron": [
+    "unhealthy",
+    "food"
+  ],
+  "pop": [
+    "unhealthy",
+    "drink"
+  ],
+  "epic meal": [
+    "unhealthy",
+    "hashtag"
+  ],
+  "epicmeal": [
+    "unhealthy",
+    "hashtag"
+  ],
+  "mousse": [
+    "unhealthy",
+    "food"
+  ],
+  "cheese curds": [
+    "unhealthy",
+    "food"
+  ],
+  "glazed": [
+    "unhealthy"
+  ],
+  "sugarsine": [
+    "unhealthy"
+  ],
+  "milkshake": [
+    "unhealthy",
+    "drink"
+  ],
+  "milk shake": [
+    "unhealthy",
+    "drink"
+  ],
+  "cheese cake": [
+    "unhealthy",
+    "food"
+  ],
+  "cheesecake": [
+    "unhealthy",
+    "food"
+  ],
+  "foodies": [
+    "unhealthy",
+    "hashtag"
+  ],
+  "cheeseburgers": [
+    "unhealthy",
+    "food"
+  ],
+  "cravings": [
+    "unhealthy"
+  ],
+  "stuffed": [
+    "unhealthy"
+  ],
+  "mini donuts": [
+    "unhealthy",
+    "food"
+  ],
+  "minidonuts": [
+    "unhealthy",
+    "food"
+  ],
+  "softpeaksicecream": [
+    "unhealthy",
+    "company"
+  ],
+  "softserve": [
+    "unhealthy",
+    "food"
+  ]
+}

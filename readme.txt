@@ -1,0 +1,1 @@
+Social Spatial is a set of tools created for the purpose of helping reserachers to understand the social and spatial patterns in social media datasets

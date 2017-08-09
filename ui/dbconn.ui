@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>dbconn_dockable</class>
+ <widget class="QDockWidget" name="dbconn_dockable">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>269</width>
+    <height>559</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Database Connection</string>
+  </property>
+  <widget class="QWidget" name="dockWidgetContents">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QGroupBox" name="dbconFile_GroupBox">
+      <property name="title">
+       <string>Configuration File</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="config_LoadFile_pushButton">
+         <property name="text">
+          <string>Load</string>
+         </property>
+         <property name="autoDefault">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="config_saveFile_pushButton">
+         <property name="text">
+          <string>Save</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="config_filename_lineEdit">
+         <property name="text">
+          <string>data\db_defaultinfo.json</string>
+         </property>
+         <property name="maxLength">
+          <number>80</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="connection_groupbox">
+      <property name="title">
+       <string>Connection</string>
+      </property>
+      <layout class="QVBoxLayout" name="dbconConnect_GroupBox_3">
+       <item>
+        <layout class="QFormLayout" name="formLayout_5">
+         <property name="fieldGrowthPolicy">
+          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="conn_host_label">
+           <property name="text">
+            <string>Host</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="conn_host_lineEdit"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="conn_port_label">
+           <property name="text">
+            <string>Port</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="conn_port_lineEdit"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="conn_UserFile_label">
+           <property name="text">
+            <string>user file</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="conn_dbname_label">
+           <property name="text">
+            <string>database name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="conn_userfilename_lineEdit"/>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="conn_dbname_lineEdit"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="socialtable_groupbox">
+      <property name="title">
+       <string>Social Table</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <layout class="QFormLayout" name="formLayout">
+         <property name="fieldGrowthPolicy">
+          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="social_table_label">
+           <property name="text">
+            <string>table name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="social_data_label">
+           <property name="text">
+            <string>data column</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="social_data_lineEdit"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="social_time_label">
+           <property name="text">
+            <string>time column</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="social_time_lineEdit"/>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="social_user_label">
+           <property name="text">
+            <string>user column</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="social_user_lineEdit"/>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="social_geom_label">
+           <property name="text">
+            <string>geometry column</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLineEdit" name="social_geom_lineEdit"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="social_table_lineEdit"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="areaboundarytable_groupbox">
+      <property name="title">
+       <string>Area Boundary Table</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <layout class="QFormLayout" name="formLayout_2">
+         <property name="fieldGrowthPolicy">
+          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="area_table_label">
+           <property name="text">
+            <string>table name</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="area_table_lineEdit"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="area_label_label">
+           <property name="text">
+            <string>lable column</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="area_label_lineEdit"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="area_geom_label">
+           <property name="text">
+            <string>geometry column</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="area_geom_lineEdit"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1065</width>
+    <height>860</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1065</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionFile"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionExport"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionGoogle_Knowledge_Graph"/>
+    <addaction name="actionWordnet"/>
+    <addaction name="actionWord_Map"/>
+    <addaction name="separator"/>
+    <addaction name="actionTopic_Modelling"/>
+    <addaction name="actionSentiment_Modelling"/>
+    <addaction name="separator"/>
+    <addaction name="actionWordle_Map"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionDatabase_Connection"/>
+    <addaction name="actionWord_List"/>
+    <addaction name="actionPost_Samples"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuTools"/>
+   <addaction name="menuView"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionFile">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionExport">
+   <property name="text">
+    <string>Export</string>
+   </property>
+  </action>
+  <action name="actionGoogle_Knowledge_Graph">
+   <property name="text">
+    <string>Google Knowledge Graph</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WidgetShortcut</enum>
+   </property>
+  </action>
+  <action name="actionWordnet">
+   <property name="text">
+    <string>Wordnet</string>
+   </property>
+  </action>
+  <action name="actionWord_Map">
+   <property name="text">
+    <string>Word Map</string>
+   </property>
+  </action>
+  <action name="actionTopic_Modelling">
+   <property name="text">
+    <string>Topic Modelling</string>
+   </property>
+  </action>
+  <action name="actionSentiment_Modelling">
+   <property name="text">
+    <string>Sentiment Modelling</string>
+   </property>
+  </action>
+  <action name="actionWordle_Map">
+   <property name="text">
+    <string>Wordle Map</string>
+   </property>
+  </action>
+  <action name="actionDatabase_Connection">
+   <property name="text">
+    <string>Database Connection</string>
+   </property>
+  </action>
+  <action name="actionWord_List">
+   <property name="text">
+    <string>Word List</string>
+   </property>
+  </action>
+  <action name="actionPost_Samples">
+   <property name="text">
+    <string>Post Samples</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
