@@ -1,7 +1,12 @@
 import json
 from PyQt4 import QtGui
 
-
+# --------------------------------
+# class:     	Wordlist
+# description: 	a data model of a wordlist
+# params:     	none
+# returns:    	none
+# --------------------------------
 class Wordlist(object):
 	def __init__(self):
 		self.words = {}
@@ -31,9 +36,7 @@ class Wordlist(object):
 	# --------------------------------
 	def json_write(self,filename):
 		with open(filename,'w') as outfile:
-			json.dump(self.get_as_dictionary(),outfile,ensure_ascii=False)
-			with open(filename,'w') as outfile:
-				json.dump(self.words,outfile,ensure_ascii=False)
+			json.dump(self.words,outfile,ensure_ascii=False)
 
 	def len_tags(self):
 		longest=0

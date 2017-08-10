@@ -36,6 +36,15 @@ class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
 		self.wl.json_load(self.wordlistfile_lineEdit.text())
 		self.wordlist_tableWidget.setRowCount(len(self.wl.words))
 		self.wordlist_tableWidget.setColumnCount(self.wl.len_tags()+1) #we add one because the word itself needs a column
+
+		#set the column headers
+		hdrs = QStringList()
+		hdrs.append(QString("Word"))
+		for i in range(1,self.wl.len_tags()+1):
+			hdrs.append(QString("tag"+str(i)))
+
+		self.wordlist_tableWidget.setHorizontalHeaderLabels(hdrs)
+
 		row=0
 		for key in self.wl.words.keys():
 			print 'new row:'+key
@@ -50,15 +59,20 @@ class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
 			row+=1
 		print 'table rows:'+str(self.wordlist_tableWidget.rowCount())
 
+	# --------------------------------
+	# method:     	save_wordlist
+	# description: 	saves the current wordlist to a json file
+	# params:     	none
+	# returns:    	none
+	# --------------------------------
 	def save_wordlist(self):
-		pass
+		self.wl.json_write(self.wordlistfile_lineEdit.text())
 
 	# --------------------------------
 	# method:     	add_word
 	# description: 	use the word and tags (comma seperated) in the new word form to add a new word to the wordlist
 	# params:     	none
 	# returns:    	none
-	# to_do: 		sync with the self.wl data model
 	# --------------------------------
 	def add_word(self):
 		self.wordlist_tableWidget.setRowCount(self.wordlist_tableWidget.rowCount()+1)
@@ -74,12 +88,18 @@ class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
 			col+=1
 		print 'table rows:'+str(self.wordlist_tableWidget.rowCount())
 
+		#add the word to the wl data model
+		l = []
+		for t in tags:
+			l.append(str(t))
+		self.wl.words[str(self.NewWord_lineEdit.text())]=l
+		#print self.wl.words
+
 	# --------------------------------
 	# method:     	remove_word
 	# description: 	delete selected word (and associated tags) from the wordlist
 	# params:     	none
 	# returns:    	none
-	# to_do: sync 	with the self.wl data model
 	# --------------------------------
 	def remove_words(self):
 		l=[]
@@ -88,9 +108,10 @@ class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
 			l.append(i.row())
 		l=list(set(l))
 		l.sort()
+		
 		#remove in reverse order to preserve the table indexes
-		for i in l[::-1]:
-			#print "removing"+str(i)
+		for i in l[::-1]:			
+			#print "popping: "+str(self.wordlist_tableWidget.item(i,0).text())
+			self.wl.words.pop(str(self.wordlist_tableWidget.item(i,0).text()))		# update the worldlist data model
 			self.wordlist_tableWidget.removeRow(i)
-
-
+		#print self.wl.words
