@@ -40,7 +40,7 @@
          <item>
           <widget class="QLineEdit" name="wordlistfile_lineEdit">
            <property name="text">
-            <string>wordlist.json</string>
+            <string>data\masterlist.json</string>
            </property>
           </widget>
          </item>

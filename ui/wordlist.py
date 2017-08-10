@@ -101,7 +101,7 @@ class Ui_wordlist_dockable(object):
         self.file.setTitle(_translate("wordlist_dockable", "Wordfile", None))
         self.wordlistload_pushButton.setText(_translate("wordlist_dockable", "Load", None))
         self.wordlistsave_pushButton.setText(_translate("wordlist_dockable", "Save", None))
-        self.wordlistfile_lineEdit.setText(_translate("wordlist_dockable", "wordlist.json", None))
+        self.wordlistfile_lineEdit.setText(_translate("wordlist_dockable", "data\\masterlist.json", None))
         self.List.setTitle(_translate("wordlist_dockable", "Wordlist", None))
         item = self.wordlist_tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("wordlist_dockable", "Word", None))
