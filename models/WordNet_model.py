@@ -15,9 +15,10 @@ class WordNet:
 		# 	logging.info("Synonyms:"+", ".join(j.lemma_names()))
 		# 	logging.info("Hypernyms:"+" ,".join(list(chain(*[l.lemma_names() for l in j.hypernyms()]))))
 		# 	logging.info("Hyponyms:"+" ,".join(list(chain(*[l.lemma_names() for l in j.hyponyms()]))))
-
-
-	
+		self.hyponyms = get_hyponyms()
+		self.synonyms = get_synonyms()
+		self.hypernyms = get_hypernyms()
+			
 	# --------------------------------
 	#method get_hyponyms
 	#description: creates a list of all the semantic children 
