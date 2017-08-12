@@ -19,7 +19,12 @@ class Wordnet_ui(QtGui.QDockWidget, wordnet.Ui_wordnet_dockable):
 		self.addtolist_pushButton.clicked.connect(self.addToList)
 		
 		
-
+	# --------------------------------
+	# method:     	search
+	# description: 	search wordnet for synonyms, hyponyms, and hypernyms
+	# params:     	none
+	# returns:    	none
+	# --------------------------------
 	def search(self):
 		
 		#clear current contents
@@ -33,6 +38,14 @@ class Wordnet_ui(QtGui.QDockWidget, wordnet.Ui_wordnet_dockable):
 		for i in self.wn.hypernyms:self.hypernyms_listWidget.addItem(QString(i))
 		for i in self.wn.hyponyms:self.hyponyms_listWidget.addItem(QString(i))
 
+
+	# --------------------------------
+	# method:     	addToList
+	# description: 	get all of the currently selected items, and send them off to the main window as a slot
+	# property:		procStart, the list data to add to the wordlist
+	# params:     	none
+	# returns:    	none
+	# --------------------------------
 	@QtCore.pyqtSlot()
 	def addToList(self):
 		sel = []
