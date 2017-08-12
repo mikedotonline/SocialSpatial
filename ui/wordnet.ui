@@ -51,7 +51,11 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QListWidget" name="synonyms_listWidget"/>
+           <widget class="QListWidget" name="synonyms_listWidget">
+            <property name="selectionMode">
+             <enum>QAbstractItemView::ExtendedSelection</enum>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -63,7 +67,11 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
-           <widget class="QListWidget" name="hypernyms_listWidget"/>
+           <widget class="QListWidget" name="hypernyms_listWidget">
+            <property name="selectionMode">
+             <enum>QAbstractItemView::ExtendedSelection</enum>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -75,7 +83,11 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
-           <widget class="QListWidget" name="hyponyms_listWidget"/>
+           <widget class="QListWidget" name="hyponyms_listWidget">
+            <property name="selectionMode">
+             <enum>QAbstractItemView::ExtendedSelection</enum>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>

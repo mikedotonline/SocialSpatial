@@ -17,12 +17,25 @@ class Wordnet_ui(QtGui.QDockWidget, wordnet.Ui_wordnet_dockable):
 		
 
 	def search(self):
+		
+		#clear current contents
+		self.synonyms_listWidget.clear()
+		self.hyponyms_listWidget.clear()
+		self.hypernyms_listWidget.clear()
+
 		self.wn = Wordnet_model.WordNet(str(self.search_lineEdit.text()))
 
 		for i in self.wn.synonyms:self.synonyms_listWidget.addItem(QString(i))
 		for i in self.wn.hypernyms:self.hypernyms_listWidget.addItem(QString(i))
 		for i in self.wn.hyponyms:self.hyponyms_listWidget.addItem(QString(i))
 	def addToList(self):
-		pass
+		sel = []
+		for i in self.synonyms_listWidget.selectedItems():	sel.append(i.text())
+		for i in self.hypernyms_listWidget.selectedItems():	sel.append(i.text())
+		for i in self.hyponyms_listWidget.selectedItems(): sel.append(i.text())
+		#print sel
+
+		#now, how do I transfer the items from this class to the next....
+		# https://stackoverflow.com/questions/14090353/sending-messages-between-two-widgets-using-signals-and-slots
 
 		
