@@ -1,3 +1,10 @@
+import urllib
+from datetime import datetime
+import json
+import logging #get some logging going to make it easier to debug
+logging.basicConfig(level=logging.INFO) #optional argument, filename="tk_freebase-explorer.log" and filemode='w'
+
+
 # --------------------------------
 # class:     GoogleKnowledgeGraph
 # description: a class for handling requests to the google knowledge graph
@@ -10,17 +17,9 @@ class GoogleKnowledgeGraph(object):
 		self.api_key = open(key_file).read()
 		self.service_url = 'https://kgsearch.googleapis.com/v1/entities:search'
 
-		self.data = get_response(query,limit,types)
-
-		# if types == 'thing':
-			#self.data = get_thing (query,limit)
-		# else if types == 'product':
-			#self.data = get_products(query, limit)
-		# else if types == 'person':
-			#self.data = get_person(query,limit)
-		#else:
-			# throw execption hissyfit
-		
+		self.response = self.get_response(query,limit,types)
+		self.items = list(i['result']['name'] for i in response["itemListElement"])
+	
 
 	# --------------------------------
 	# method:     get_response
@@ -43,16 +42,8 @@ class GoogleKnowledgeGraph(object):
 		t = datetime.now()
 		response = json.loads(urllib.urlopen(url).read())
 		logging.info("response completed in: "+str(datetime.now()-t))
-		return response 
-
-	def get_products(self):
-		pass
-		#do get_response with a product type query and form a data object using that 
-
-	def get_thing(self):
-		pass
-		#do get_response with a thing type query and form a data object based o nthe response
-
-	def get_person(self):
-		pass
-		#do get response with a thing type query and form a data object based on the response
+		
+		if 'error' in response
+			return "invalid type"
+		else:
+			return response
