@@ -51,7 +51,7 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QListView" name="synonyms_listView"/>
+           <widget class="QListWidget" name="synonyms_listWidget"/>
           </item>
          </layout>
         </widget>
@@ -63,7 +63,7 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
-           <widget class="QListView" name="hypernyms_listView"/>
+           <widget class="QListWidget" name="hypernyms_listWidget"/>
           </item>
          </layout>
         </widget>
@@ -75,7 +75,7 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
-           <widget class="QListView" name="hyponyms_listView"/>
+           <widget class="QListWidget" name="hyponyms_listWidget"/>
           </item>
          </layout>
         </widget>

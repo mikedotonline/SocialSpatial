@@ -1,3 +1,6 @@
+import nltk
+from nltk.corpus import wordnet as wn #use NLTK for access to wordNet
+from itertools import chain
 # --------------------------------
 #class WordNet
 #description: this class finds all semantic equivalent terms
@@ -6,18 +9,9 @@
 class WordNet:
 	def __init__ (self,word):
 		self.word = word
-		#searchString = self.word+".n.01" #use first definition
-		#self.term = wn.synset(searchString) #make a synset of the term
-
-		#for debugging, write out a lists of everything that is going on
-		# for i,j, in enumerate(wn.synsets(word)):
-		# 	logging.info("word",i,j.name())
-		# 	logging.info("Synonyms:"+", ".join(j.lemma_names()))
-		# 	logging.info("Hypernyms:"+" ,".join(list(chain(*[l.lemma_names() for l in j.hypernyms()]))))
-		# 	logging.info("Hyponyms:"+" ,".join(list(chain(*[l.lemma_names() for l in j.hyponyms()]))))
-		self.hyponyms = get_hyponyms()
-		self.synonyms = get_synonyms()
-		self.hypernyms = get_hypernyms()
+		self.hyponyms = self.get_hyponyms()
+		self.synonyms = self.get_synonyms()
+		self.hypernyms = self.get_hypernyms()
 			
 	# --------------------------------
 	#method get_hyponyms
@@ -25,14 +19,10 @@ class WordNet:
 	#returns: a list of hyponyms
 	# --------------------------------
 	def get_hyponyms(self):
-	# 	hyponyms = set()
-	# 	for hyponym in synset.hyponyms():
-	# 		hyponyms |= set(self.get_hyponyms(hyponym))
-	# 	return hyponyms | set(synset.hyponyms())
 		li=[]
 		for i,j in enumerate(wn.synsets(self.word)):
 			li.append(list(chain(*[l.lemma_names() for l in j.hyponyms()])))
-		return li
+		return list(set([item for sublist in li for item in sublist])) #this line flattens the lits of lists and removes duplicates.... so pythonic it hurts (to read)
 
 	# --------------------------------
 	#method get_synonyms
@@ -42,7 +32,9 @@ class WordNet:
 	def get_synonyms(self):
 		li=[]
 		for i,j, in enumerate(wn.synsets(self.word)):
-			li.append(j.lemma_names())
+			for k in j.lemma_names():
+				li.append(k)
+				li = list(set(li))
 		return li 
 
 
@@ -55,4 +47,4 @@ class WordNet:
 		li=[]
 		for i,j in enumerate(wn.synsets(self.word)):
 			li.append(list(chain(*[l.lemma_names() for l in j.hypernyms()])))
-		return li
+		return list(set([item for sublist in li for item in sublist]))

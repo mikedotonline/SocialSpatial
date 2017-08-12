@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui\wordnet.ui'
+# Form implementation generated from reading ui file 'wordnet.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #
@@ -52,25 +52,25 @@ class Ui_wordnet_dockable(object):
         self.groupBox_2.setObjectName(_fromUtf8("groupBox_2"))
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.groupBox_2)
         self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
-        self.synonyms_listView = QtGui.QListView(self.groupBox_2)
-        self.synonyms_listView.setObjectName(_fromUtf8("synonyms_listView"))
-        self.verticalLayout_3.addWidget(self.synonyms_listView)
+        self.synonyms_listWidget = QtGui.QListWidget(self.groupBox_2)
+        self.synonyms_listWidget.setObjectName(_fromUtf8("synonyms_listWidget"))
+        self.verticalLayout_3.addWidget(self.synonyms_listWidget)
         self.horizontalLayout_3.addWidget(self.groupBox_2)
         self.groupBox_3 = QtGui.QGroupBox(self.groupBox)
         self.groupBox_3.setObjectName(_fromUtf8("groupBox_3"))
         self.verticalLayout_4 = QtGui.QVBoxLayout(self.groupBox_3)
         self.verticalLayout_4.setObjectName(_fromUtf8("verticalLayout_4"))
-        self.hypernyms_listView = QtGui.QListView(self.groupBox_3)
-        self.hypernyms_listView.setObjectName(_fromUtf8("hypernyms_listView"))
-        self.verticalLayout_4.addWidget(self.hypernyms_listView)
+        self.hypernyms_listWidget = QtGui.QListWidget(self.groupBox_3)
+        self.hypernyms_listWidget.setObjectName(_fromUtf8("hypernyms_listWidget"))
+        self.verticalLayout_4.addWidget(self.hypernyms_listWidget)
         self.horizontalLayout_3.addWidget(self.groupBox_3)
         self.groupBox_4 = QtGui.QGroupBox(self.groupBox)
         self.groupBox_4.setObjectName(_fromUtf8("groupBox_4"))
         self.verticalLayout_5 = QtGui.QVBoxLayout(self.groupBox_4)
         self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
-        self.hyponyms_listView = QtGui.QListView(self.groupBox_4)
-        self.hyponyms_listView.setObjectName(_fromUtf8("hyponyms_listView"))
-        self.verticalLayout_5.addWidget(self.hyponyms_listView)
+        self.hyponyms_listWidget = QtGui.QListWidget(self.groupBox_4)
+        self.hyponyms_listWidget.setObjectName(_fromUtf8("hyponyms_listWidget"))
+        self.verticalLayout_5.addWidget(self.hyponyms_listWidget)
         self.horizontalLayout_3.addWidget(self.groupBox_4)
         self.verticalLayout_2.addWidget(self.groupBox)
         self.addtolist_pushButton = QtGui.QPushButton(self.dockWidgetContents)

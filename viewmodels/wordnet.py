@@ -4,11 +4,25 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
 import ui.wordnet as wordnet
+import models.WordNet_model as Wordnet_model 
 
 
 class Wordnet_ui(QtGui.QDockWidget, wordnet.Ui_wordnet_dockable):
 	def __init__(self,parent=None):
 		super(self.__class__, self).__init__(parent)
 		self.setupUi(self)
-	def foo(self):
+
+		self.search_pushButton.clicked.connect(self.search)
+		self.addtolist_pushButton.clicked.connect(self.addToList)
+		
+
+	def search(self):
+		self.wn = Wordnet_model.WordNet(str(self.search_lineEdit.text()))
+
+		for i in self.wn.synonyms:self.synonyms_listWidget.addItem(QString(i))
+		for i in self.wn.hypernyms:self.hypernyms_listWidget.addItem(QString(i))
+		for i in self.wn.hyponyms:self.hyponyms_listWidget.addItem(QString(i))
+	def addToList(self):
 		pass
+
+		
