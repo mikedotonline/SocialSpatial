@@ -18,7 +18,7 @@ class GoogleKnowledgeGraph(object):
 		self.service_url = 'https://kgsearch.googleapis.com/v1/entities:search'
 
 		self.response = self.get_response(query,limit,types)
-		self.items = list(i['result']['name'] for i in response["itemListElement"])
+		self.items = list(i['result']['name'] for i in self.response["itemListElement"])
 	
 
 	# --------------------------------
@@ -43,7 +43,7 @@ class GoogleKnowledgeGraph(object):
 		response = json.loads(urllib.urlopen(url).read())
 		logging.info("response completed in: "+str(datetime.now()-t))
 		
-		if 'error' in response
+		if 'error' in response:
 			return "invalid type"
 		else:
 			return response

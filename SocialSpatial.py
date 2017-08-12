@@ -13,32 +13,47 @@ import models.GoogleKnowledgeGraph
 import viewmodels.DBConn as dbconn
 import viewmodels.wordnet as wordnet
 import viewmodels.wordlist as wordlist
+import viewmodels.googleknowledgegraph as googleknowledgegraph
 
 
 class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 	def __init__(self, parent=None):
 		super(self.__class__, self).__init__(parent)
 		self.setupUi(self)
+		
+		#database connection dock
 		self.dbconn_dock = dbconn.DBConn_ui()
 		self.addDockWidget(Qt.LeftDockWidgetArea,self.dbconn_dock)
 
-		self.wordnet_dock = wordnet.Wordnet_ui()
-		self.addDockWidget(Qt.RightDockWidgetArea,self.wordnet_dock)
-		self.wordnet_dock.hide()
-
+		#wordlist dock
 		self.wordlist_dock = wordlist.Wordlist_ui()
 		self.addDockWidget(Qt.RightDockWidgetArea,self.wordlist_dock)
 
+		#wordnet dock tool
+		self.wordnet_dock = wordnet.Wordnet_ui()
+		self.addDockWidget(Qt.RightDockWidgetArea,self.wordnet_dock)
+		self.wordnet_dock.hide()
+		
+		#googleknowedgegraph dock tool
+		self.googleknowledgegraph_dock = googleknowledgegraph.GoogleKnowledgeGraph_ui()
+		self.addDockWidget(Qt.RightDockWidgetArea,self.googleknowledgegraph_dock)
+		self.googleknowledgegraph_dock.hide()
 
+		#menu item control
 		self.actionDatabase_Connection.activated.connect(self.showhide_dbconn)
 		self.actionWordnet.activated.connect(self.showhide_wordnet)
+		self.actionGoogle_Knowledge_Graph.activated.connect(self.showhide_googleknowledgegraph)
 		self.actionWord_List.activated.connect(self.showhide_wordlist)
+		
+		#set initial visibility or each dock item
 		self.dbconn_visible = True
 		self.wordlist_visible = True
-		self.wordnet_visible=False
+		self.wordnet_visible = False
+		self.googleknowledgegraph_visible = False
 
 		#create the signal connection
 		self.wordnet_dock.procStart.connect(self.wordlist_dock.on_procStart)
+		self.googleknowledgegraph_dock.procStart.connect(self.wordlist_dock.on_procStart)
 
 	def showhide_dbconn(self):
 		if self.dbconn_visible==True:
@@ -57,6 +72,7 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 			self.wordlist_dock.show()
 			self.wordlist_visible=True
 			self.wordlist.raise_()
+			self.googleknowledgegraph.raise_()
 
 	
 	def showhide_wordnet(self):
@@ -65,7 +81,15 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 			self.wordnet_visible=False
 		else:
 			self.wordnet_dock.show()
-			self.wordnet_visible=True			
+			self.wordnet_visible=True
+
+	def showhide_googleknowledgegraph(self):
+		if self.googleknowledgegraph_visible==True:
+			self.googleknowledgegraph_dock.hide()
+			self.googleknowledgegraph_visible=False
+		else:
+			self.googleknowledgegraph_dock.show()
+			self.googleknowledgegraph_visible=True			
 
 
 def main():

@@ -53,8 +53,8 @@
     <addaction name="actionPost_Samples"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuTools"/>
    <addaction name="menuView"/>
+   <addaction name="menuTools"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionFile">
