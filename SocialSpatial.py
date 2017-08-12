@@ -29,12 +29,16 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		self.wordlist_dock = wordlist.Wordlist_ui()
 		self.addDockWidget(Qt.RightDockWidgetArea,self.wordlist_dock)
 
+
 		self.actionDatabase_Connection.activated.connect(self.showhide_dbconn)
 		self.actionWordnet.activated.connect(self.showhide_wordnet)
 		self.actionWord_List.activated.connect(self.showhide_wordlist)
 		self.dbconn_visible = True
 		self.wordlist_visible = True
 		self.wordnet_visible=False
+
+		#create the signal connection
+		self.wordnet_dock.procStart.connect(self.wordlist_dock.on_procStart)
 
 	def showhide_dbconn(self):
 		if self.dbconn_visible==True:
@@ -44,6 +48,7 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 			self.dbconn_dock.show()
 			self.dbconn_visible=True
 	
+	@QtCore.pyqtSlot()
 	def showhide_wordlist(self):
 		if self.wordlist_visible==True:
 			self.wordlist_dock.hide()
@@ -51,14 +56,16 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		else:
 			self.wordlist_dock.show()
 			self.wordlist_visible=True
+			self.wordlist.raise_()
 
+	
 	def showhide_wordnet(self):
 		if self.wordnet_visible==True:
 			self.wordnet_dock.hide()
 			self.wordnet_visible=False
 		else:
 			self.wordnet_dock.show()
-			self.wordnet_visible=True
+			self.wordnet_visible=True			
 
 
 def main():

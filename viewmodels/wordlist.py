@@ -16,6 +16,9 @@ class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
 	def __init__(self,parent=None):
 		super(self.__class__, self).__init__(parent)
 		self.setupUi(self)
+		
+
+
 		self.wordlistload_pushButton.clicked.connect(self.load_wordlist)
 		self.wordlistsave_pushButton.clicked.connect(self.save_wordlist)
 		self.AddNew_pushButton.clicked.connect(self.add_word)
@@ -115,3 +118,20 @@ class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
 			self.wl.words.pop(str(self.wordlist_tableWidget.item(i,0).text()))		# update the worldlist data model
 			self.wordlist_tableWidget.removeRow(i)
 		#print self.wl.words
+
+	@QtCore.pyqtSlot(list)
+	def on_procStart(self, message):
+		print(message)
+		self.add_word(message)
+
+
+		self.raise_()
+
+	#add_words overload for adding in 
+	def add_word(self,in_list):
+		for i in in_list:
+			self.wordlist_tableWidget.setRowCount(self.wordlist_tableWidget.rowCount()+1)
+			newitem = QTableWidgetItem(i)
+			self.wordlist_tableWidget.setItem(self.wordlist_tableWidget.rowCount()-1,0,newitem)
+			self.wl.words[str(i)]=['']
+	
