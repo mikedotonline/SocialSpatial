@@ -4,8 +4,14 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 import models.databaseConnection_model as db_model
 import ui.dbconn as dbconn
+import json
+
+import psycopg2
 
 class DBConn_ui(QtGui.QDockWidget, dbconn.Ui_dbconn_dockable):
+	#signal of the selected words
+	connection = QtCore.pyqtSignal(list)
+
 	def __init__(self,parent=None):
 		super(self.__class__,self).__init__(parent)
 		self.setupUi(self)
@@ -29,6 +35,8 @@ class DBConn_ui(QtGui.QDockWidget, dbconn.Ui_dbconn_dockable):
 		self.area_table_lineEdit.textChanged.connect(self.set_areatable)
 		self.area_label_lineEdit.textChanged.connect(self.set_arealabel)
 		self.area_geom_lineEdit.textChanged.connect(self.set_areageom)
+
+		self.connect_pushButton.clicked.connect(self.connect)
 
 	#methods for signals. i bet this could have all been done inline with lambda functions.
 	# self.conn_host_lineEdit.connect(lambda s:self.db.socialtable=s) 
@@ -73,3 +81,19 @@ class DBConn_ui(QtGui.QDockWidget, dbconn.Ui_dbconn_dockable):
 		print 'save btn pressed'
 		print 'self.db.host: '+self.db.host #testing
 		self.db.json_write(self.config_filename_lineEdit.text())
+
+	@QtCore.pyqtSlot()
+	def connect(self):		
+		with open(self.db.userinfo) as infile:
+			up = json.load(infile)
+		connString = "dbname='"+self.db.dbname+"' user='"+up['username']+"' host='"+self.db.host+"' port='"+self.db.port+"' password='"+up['password']+"'"
+		conn = psycopg2.connect(connString)
+		print("connected")
+
+		self.dbconnect = [conn,self.db]
+
+		self.connection.emit(self.dbconnect)
+
+
+
+

@@ -41,7 +41,7 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		self.googleknowledgegraph_dock.hide()
 
 		#wordgeography dock tool
-		self.wordgeography_dock = wordgeography.WordGeography_ui()
+		self.wordgeography_dock = wordgeography.WordGeography_ui(self.wordlist_dock)
 		self.addDockWidget(Qt.RightDockWidgetArea,self.wordgeography_dock)
 		self.wordgeography_dock.hide()
 
@@ -62,7 +62,8 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		#create the signal connection
 		self.wordnet_dock.procStart.connect(self.wordlist_dock.on_procStart)
 		self.googleknowledgegraph_dock.procStart.connect(self.wordlist_dock.on_procStart)
-
+		self.wordlist_dock.selectedWords.connect(self.wordgeography_dock.on_selectedWords)
+		self.dbconn_dock.connection.connect(self.wordgeography_dock.on_connection)
 	def showhide_dbconn(self):
 		if self.dbconn_visible==True:
 			self.dbconn_dock.hide()
@@ -99,13 +100,15 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 			self.googleknowledgegraph_dock.show()
 			self.googleknowledgegraph_visible=True
 
+	@QtCore.pyqtSlot()
 	def showhide_wordgeography(self):
 		if self.wordgeography_visible==True:
 			self.wordgeography_dock.hide()
 			self.wordgeography_visible=False
 		else:
 			self.wordgeography_dock.show()
-			self.wordgeography_visible=True				
+			self.wordgeography_visible=True
+			self.wordgeography_dock.raise_()				
 
 
 def main():

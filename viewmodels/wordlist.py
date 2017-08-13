@@ -13,6 +13,10 @@ import ui.wordlist as wordlist
 	# returns:    	none
 	# --------------------------------
 class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
+	
+	#signal of the selected words
+	selectedWords = QtCore.pyqtSignal(list)
+	
 	def __init__(self,parent=None):
 		super(self.__class__, self).__init__(parent)
 		self.setupUi(self)
@@ -24,6 +28,8 @@ class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
 		self.AddNew_pushButton.clicked.connect(self.add_word)
 		self.removewords_pushButton.clicked.connect(self.remove_words)
 		self.wl = wordlist_model.Wordlist()	
+
+		self.wordlist_tableWidget.itemSelectionChanged.connect(self.send_list)
 
 	# --------------------------------
 	# method:     	load_wordlist
@@ -135,3 +141,14 @@ class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
 			self.wordlist_tableWidget.setItem(self.wordlist_tableWidget.rowCount()-1,0,newitem)
 			self.wl.words[str(i)]=['']
 	
+	@QtCore.pyqtSlot()
+	def send_list(self):
+		row=[]
+		for i in self.wordlist_tableWidget.selectedIndexes():
+			row.append(i.row())
+		row=list(set(row))
+		wrds=[]
+		for i in row:
+			wrds.append(str(self.wordlist_tableWidget.item(i,0).text()))
+		#print wrds 
+		self.selectedWords.emit(wrds)

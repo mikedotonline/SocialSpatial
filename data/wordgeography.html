@@ -36,20 +36,19 @@
 				id: 'mapbox.streets'
 			}).addTo(mymap);
 
-			L.marker([ 49.280224, -122.917147]).addTo(mymap)
-				.bindPopup("<b>Twitter Content</b><br />OMG, WOWZERS").openPopup();
+			// L.marker([ 49.280224, -122.917147]).addTo(mymap)
+			// 	.bindPopup("<b>Twitter Content</b><br />OMG, WOWZERS").openPopup();
 
+			//var popup = L.popup();
 
-			var popup = L.popup();
+			// function onMapClick(e) {
+			// 	popup
+			// 		.setLatLng(e.latlng)
+			// 		.setContent("You clicked the map at " + e.latlng.toString())
+			// 		.openOn(mymap);
+			// }
 
-			function onMapClick(e) {
-				popup
-					.setLatLng(e.latlng)
-					.setContent("You clicked the map at " + e.latlng.toString())
-					.openOn(mymap);
-			}
-
-			mymap.on('click', onMapClick);
+			// mymap.on('click', onMapClick);
 
 		</script>
 	</body>

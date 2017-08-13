@@ -144,6 +144,9 @@ class Ui_dbconn_dockable(object):
         self.area_geom_lineEdit.setObjectName(_fromUtf8("area_geom_lineEdit"))
         self.formLayout_2.setWidget(2, QtGui.QFormLayout.FieldRole, self.area_geom_lineEdit)
         self.verticalLayout_6.addLayout(self.formLayout_2)
+        self.connect_pushButton = QtGui.QPushButton(self.areaboundarytable_groupbox)
+        self.connect_pushButton.setObjectName(_fromUtf8("connect_pushButton"))
+        self.verticalLayout_6.addWidget(self.connect_pushButton)
         self.verticalLayout_2.addWidget(self.areaboundarytable_groupbox)
         spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem)
@@ -173,4 +176,5 @@ class Ui_dbconn_dockable(object):
         self.area_table_label.setText(_translate("dbconn_dockable", "table name", None))
         self.area_label_label.setText(_translate("dbconn_dockable", "lable column", None))
         self.area_geom_label.setText(_translate("dbconn_dockable", "geometry column", None))
+        self.connect_pushButton.setText(_translate("dbconn_dockable", "Connect", None))
 
