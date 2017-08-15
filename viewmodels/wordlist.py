@@ -56,12 +56,12 @@ class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
 
 		row=0
 		for key in self.wl.words.keys():
-			print 'new row:'+key
+			# print 'new row:'+key
 			newitem = QTableWidgetItem(key)
 			self.wordlist_tableWidget.setItem(row,0,newitem)
 			col=1
 			for v in self.wl.words[key]:
-				print "\t adding value: "+v
+				#print "\t adding value: "+v
 				newitem = QTableWidgetItem(v)
 				self.wordlist_tableWidget.setItem(row,col,newitem)
 				col+=1

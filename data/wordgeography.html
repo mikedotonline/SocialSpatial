@@ -35,6 +35,10 @@
 					'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 				id: 'mapbox.streets'
 			}).addTo(mymap);
+			function getMapExtent()
+			{
+				return mymap.getBounds(); 
+			}
 
 			// L.marker([ 49.280224, -122.917147]).addTo(mymap)
 			// 	.bindPopup("<b>Twitter Content</b><br />OMG, WOWZERS").openPopup();
