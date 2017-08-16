@@ -72,7 +72,11 @@
      </layout>
     </item>
     <item>
-     <widget class="QListWidget" name="results_listWidget"/>
+     <widget class="QListWidget" name="results_listWidget">
+      <property name="selectionMode">
+       <enum>QAbstractItemView::ExtendedSelection</enum>
+      </property>
+     </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">

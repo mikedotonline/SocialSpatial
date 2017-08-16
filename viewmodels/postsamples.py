@@ -36,7 +36,11 @@ class PostSamples_ui(QtGui.QDockWidget, postsamples.Ui_PostSamples_DockWidget):
 		# create a signal when the add to map button is pressed
 		# create a touple of (socialmedia_posts, color)
 		# emit object
-		s = (self.social_media,self.markerColor_comboBox.currentText())
+		sm=[]
+		#print(str(self.results_listWidget.selectedIndexes()[0].row()))
+		for i in self.results_listWidget.selectedIndexes():
+			sm.append(self.social_media.posts[i.row()])
+		s = (sm,self.markerColor_comboBox.currentText())		
 		self.sendSocialMedia.emit(s)
 
 

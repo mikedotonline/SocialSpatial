@@ -59,6 +59,7 @@ class Ui_PostSamples_DockWidget(object):
         self.verticalLayout.addLayout(self.formLayout)
         self.verticalLayout_2.addLayout(self.verticalLayout)
         self.results_listWidget = QtGui.QListWidget(self.dockWidgetContents)
+        self.results_listWidget.setSelectionMode(QtGui.QAbstractItemView.ExtendedSelection)
         self.results_listWidget.setObjectName(_fromUtf8("results_listWidget"))
         self.verticalLayout_2.addWidget(self.results_listWidget)
         self.horizontalLayout = QtGui.QHBoxLayout()

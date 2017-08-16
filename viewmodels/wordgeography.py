@@ -165,7 +165,7 @@ class WordGeography_ui(QtGui.QDockWidget, wordgeography.Ui_WordGeography_DockWid
 	def on_samples(self,message):
 		self.frame = self.map_webView.page().mainFrame()
 		print ("creating markers from samples")
-		for i in message[0].posts:
+		for i in message[0]:
 			#create js for maker					
 			#js = "L.marker(["+i.lat+","+i.lon+"], {icon: redMarker}).addTo(mymap).bindPopup(\"<b>"+i.username+"</b><br />"+i.text+"<br>at:"+str(i.time)+" \").openPopup();"
 			js =  "L.marker([  "+i.lat+", "+i.lon+" ]).addTo(mymap) .bindPopup(\"<b>"+i.username+"</b><br />"+i.text+"<br>at:"+str(i.time)+" \").openPopup();"
@@ -173,5 +173,7 @@ class WordGeography_ui(QtGui.QDockWidget, wordgeography.Ui_WordGeography_DockWid
 			#js =  "L.marker([  "+i.lat+", "+i.lon+" ],{icon: redmarker }).addTo(mymap) .bindPopup(\"<b>"+i.username+"</b><br />"+i.text+"<br>at:"+str(i.time)+" \").openPopup();"
 			# #format the social media posting marker
 			self.frame.evaluateJavaScript(js)
+		js = "var bounds = L.latLngBounds(markerArray); map.fitBounds(bounds);"
+		self.frame.evaluateJavaScript(js)
 
 
