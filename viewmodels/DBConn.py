@@ -9,7 +9,7 @@ import json
 import psycopg2
 
 class DBConn_ui(QtGui.QDockWidget, dbconn.Ui_dbconn_dockable):
-	#signal of the selected words
+	#signal of the connection
 	connection = QtCore.pyqtSignal(list)
 
 	def __init__(self,parent=None):

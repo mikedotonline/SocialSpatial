@@ -41,7 +41,6 @@
     </property>
     <addaction name="actionGoogle_Knowledge_Graph"/>
     <addaction name="actionWordnet"/>
-    <addaction name="actionWord_Map"/>
     <addaction name="separator"/>
     <addaction name="actionTopic_Modelling"/>
     <addaction name="actionSentiment_Modelling"/>
@@ -54,7 +53,9 @@
     </property>
     <addaction name="actionDatabase_Connection"/>
     <addaction name="actionWord_List"/>
+    <addaction name="separator"/>
     <addaction name="actionPost_Samples"/>
+    <addaction name="actionWord_Map"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>

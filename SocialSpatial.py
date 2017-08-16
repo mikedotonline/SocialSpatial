@@ -15,6 +15,7 @@ import viewmodels.wordnet as wordnet
 import viewmodels.wordlist as wordlist
 import viewmodels.googleknowledgegraph as googleknowledgegraph
 import viewmodels.wordgeography as wordgeography
+import viewmodels.postsamples as postsamples
 
 
 class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
@@ -45,12 +46,18 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		self.addDockWidget(Qt.RightDockWidgetArea,self.wordgeography_dock)
 		self.wordgeography_dock.hide()
 
+		#post samples dock tool
+		self.postsamples_dock = postsamples.PostSamples_ui(self.wordlist_dock)
+		self.addDockWidget(Qt.RightDockWidgetArea,self.postsamples_dock)
+		self.postsamples_dock.hide()
+
 		#menu item control
 		self.actionDatabase_Connection.activated.connect(self.showhide_dbconn)
 		self.actionWordnet.activated.connect(self.showhide_wordnet)
 		self.actionGoogle_Knowledge_Graph.activated.connect(self.showhide_googleknowledgegraph)
 		self.actionWord_List.activated.connect(self.showhide_wordlist)
 		self.actionWord_Map.activated.connect(self.showhide_wordgeography)
+		self.actionPost_Samples.activated.connect(self.showhide_postsamples)
 		
 		#set initial visibility or each dock item
 		self.dbconn_visible = True
@@ -58,12 +65,16 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		self.wordnet_visible = False
 		self.googleknowledgegraph_visible = False
 		self.wordgeography_visible = False
+		self.postsamples_visible = False
 
 		#create the signal connection
 		self.wordnet_dock.procStart.connect(self.wordlist_dock.on_procStart)
 		self.googleknowledgegraph_dock.procStart.connect(self.wordlist_dock.on_procStart)
 		self.wordlist_dock.selectedWords.connect(self.wordgeography_dock.on_selectedWords)
 		self.dbconn_dock.connection.connect(self.wordgeography_dock.on_connection)
+		self.wordlist_dock.selectedWords.connect(self.postsamples_dock.on_selectedWords)
+		self.dbconn_dock.connection.connect(self.postsamples_dock.on_connection)
+		self.wordgeography_dock.spatialExtent.connect(self.postsamples_dock.on_extent)
 	def showhide_dbconn(self):
 		if self.dbconn_visible==True:
 			self.dbconn_dock.hide()
@@ -108,7 +119,16 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		else:
 			self.wordgeography_dock.show()
 			self.wordgeography_visible=True
-			self.wordgeography_dock.raise_()				
+			self.wordgeography_dock.raise_()
+
+	def showhide_postsamples(self):
+		if self.postsamples_visible==True:
+			self.postsamples_dock.hide()
+			self.postsamples_visible=False
+		else:
+			self.postsamples_dock.show()
+			self.postsamples_visible=True
+			self.postsamples_dock.raise_()				
 
 
 def main():
