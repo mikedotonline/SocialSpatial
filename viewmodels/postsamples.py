@@ -10,6 +10,7 @@ import models.SocialMedia_model as socialmedia
 import ui.postsamples as postsamples
 
 class PostSamples_ui(QtGui.QDockWidget, postsamples.Ui_PostSamples_DockWidget):
+	sendSocialMedia = QtCore.pyqtSignal(tuple)
 	def __init__(self,parent=None):
 		super(self.__class__, self).__init__(parent)
 		self.setupUi(self)
@@ -19,22 +20,26 @@ class PostSamples_ui(QtGui.QDockWidget, postsamples.Ui_PostSamples_DockWidget):
 
 		self.selectedWords = []
 		self.mapBoundary='' #once i connect the even handler of mouse wheel and mouse click
+		self.social_media = None
 
 	def search (self):
-		social_media = self.get_posts()
+		self.social_media = self.get_posts()
 		print("writing values")
-		for i in social_media.posts:
+		for i in self.social_media.posts:
 			self.results_listWidget.addItem(QString(i.text))
 			print(i.text)
 
 
-
+	@QtCore.pyqtSlot()
 	def addToMap (self):
-		pass
 		#get the current social media posts
 		# create a signal when the add to map button is pressed
 		# create a touple of (socialmedia_posts, color)
 		# emit object
+		s = (self.social_media,self.markerColor_comboBox.currentText())
+		self.sendSocialMedia.emit(s)
+
+
 
 	def get_posts(self):
 		
@@ -52,18 +57,11 @@ class PostSamples_ui(QtGui.QDockWidget, postsamples.Ui_PostSamples_DockWidget):
 		# currently i need to make my own event handler for the mousePressEvent event in the UI code
 		# https://stackoverflow.com/questions/37365036/how-to-detect-if-a-mouse-button-was-pressed-on-a-qwebview
 		# https://stackoverflow.com/questions/39559334/pysideqwebviews-mouse-move-and-mouse-press-events-freezing-html-document
-		elif self.boundary_comboBox.currentText() == "Word Map Extent":
-			pass
-			
-
-			# if self.mapBoundary =='':
-			# 	spatialBoundary = " coords && \'POLYGON((-123.30 49.10, -122.73 49.10, -122.73 49.3, -123.30 49.3, -123.30 49.10))\'"
-			# else:
-			# 	spatialBoundary = self.mapBoundary			
-			#selectString = "SELECT "+self.db_connection[1].socialdata+", ST_ASGEOJSON("+self.db_connection[1].socialgeom+"), "+self.db_connection[1].socialusername+" FROM "+self.db_connection[1].socialtable+" WHERE ("+likeString+") AND "+spatialBoundary+" LIMIT "+str(self.limit_lineEdit.text())
+		#elif self.boundary_comboBox.currentText() == "Word Map Extent":
+		#	pass #not currently implemented
 		else: 
 			spatialBoundary = ''
-			#selectString = "SELECT "+self.db_connection[1].socialdata+", ST_ASGEOJSON("+self.db_connection[1].socialgeom+"), "+self.db_connection[1].socialusername+" FROM "+self.db_connection[1].socialtable+" WHERE ("+likeString+") LIMIT "+str(self.limit_lineEdit.text())
+
 
 		print("starting search for posts")
 				

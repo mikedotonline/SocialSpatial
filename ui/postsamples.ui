@@ -38,11 +38,6 @@
           </item>
           <item>
            <property name="text">
-            <string>Word Map Extent</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
             <string>None</string>
            </property>
           </item>

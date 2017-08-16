@@ -81,6 +81,7 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		self.wordlist_dock.selectedWords.connect(self.postsamples_dock.on_selectedWords)
 		self.dbconn_dock.connection.connect(self.postsamples_dock.on_connection)
 		self.wordgeography_dock.spatialExtent.connect(self.postsamples_dock.on_extent)
+		self.postsamples_dock.sendSocialMedia.connect(self.wordgeography_dock.on_samples)
 	def showhide_dbconn(self):
 		if self.dbconn_visible==True:
 			self.dbconn_dock.hide()
@@ -97,8 +98,8 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		else:
 			self.wordlist_dock.show()
 			self.wordlist_visible=True
-			self.wordlist.raise_()
-			self.googleknowledgegraph.raise_()
+			self.wordlist_dock.raise_()
+			#self.googleknowledgegraph.raise_()
 
 	
 	def showhide_wordnet(self):

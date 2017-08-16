@@ -44,7 +44,7 @@ class WordGeography_ui(QtGui.QDockWidget, wordgeography.Ui_WordGeography_DockWid
 
 		social_media = self.get_posts()
 		print ("creating markers")
-		img=''
+		#img=''
 		for i in social_media.posts:
 			#print(i) 
 			# coords = ast.literal_eval(i[1])
@@ -54,7 +54,8 @@ class WordGeography_ui(QtGui.QDockWidget, wordgeography.Ui_WordGeography_DockWid
 			# 	img= re.search("(?P<url>https?://[^\s]+)", i[0]).group("url")
 			# 	print ("img %s" %img)
 			# js =  "L.marker([  "+str(coords["coordinates"][1])+", "+str(coords["coordinates"][0])+" ]).addTo(mymap) .bindPopup(\"<b>"+i[2]+"</b><br />"+i[0]+"<img src=\'"+img+"\' /> \").openPopup();"
-			js =  "L.marker([  "+i.lat+", "+i.lon+" ]).addTo(mymap) .bindPopup(\"<b>"+i.username+"</b><br />"+i.text+"<br>at:"+str(i.time)+" \").openPopup();"
+			#js =  "L.marker([  "+i.lat+", "+i.lon+" ],{icon:red}).addTo(mymap) .bindPopup(\"<b>"+i.username+"</b><br />"+i.text+"<br>at:"+str(i.time)+" \").openPopup();"
+			js = "L.marker(["+i.lat+","+i.lon+"]).addTo(mymap).bindPopup(\"<b>"+i.username+"</b><br />"+i.text+"<br>at:"+str(i.time)+" \").openPopup();"
 			# #format the social media posting marker
 			self.frame.evaluateJavaScript(js)
 		#done
@@ -159,3 +160,18 @@ class WordGeography_ui(QtGui.QDockWidget, wordgeography.Ui_WordGeography_DockWid
 		self.db_connection = message
 		print(self.db_connection[1])
 		self.raise_()
+
+	@QtCore.pyqtSlot(tuple)
+	def on_samples(self,message):
+		self.frame = self.map_webView.page().mainFrame()
+		print ("creating markers from samples")
+		for i in message[0].posts:
+			#create js for maker					
+			#js = "L.marker(["+i.lat+","+i.lon+"], {icon: redMarker}).addTo(mymap).bindPopup(\"<b>"+i.username+"</b><br />"+i.text+"<br>at:"+str(i.time)+" \").openPopup();"
+			js =  "L.marker([  "+i.lat+", "+i.lon+" ]).addTo(mymap) .bindPopup(\"<b>"+i.username+"</b><br />"+i.text+"<br>at:"+str(i.time)+" \").openPopup();"
+			print ("placeing marker")
+			#js =  "L.marker([  "+i.lat+", "+i.lon+" ],{icon: redmarker }).addTo(mymap) .bindPopup(\"<b>"+i.username+"</b><br />"+i.text+"<br>at:"+str(i.time)+" \").openPopup();"
+			# #format the social media posting marker
+			self.frame.evaluateJavaScript(js)
+
+

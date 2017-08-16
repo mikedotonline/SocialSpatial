@@ -1,13 +1,27 @@
 <html>
 <head>
 	<title=leafletmap />
+	 <!--jquery-->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="leaflet-awesome/jquery-3.2.1.min.js"></script>
+
+	 <!-- Leaafleft-->
 	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
 	   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
 	   crossorigin=""/>
-	 <!-- Make sure you put this AFTER Leaflet's CSS -->
+		<!-- Bootstrap: Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- ionicons -->
+	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+	<link rel="stylesheet" href="leaflet-awesome/leaflet.awesome-markers.css">
+	 <!-- Leaflet: Make sure you put this AFTER Leaflet's CSS -->
 	 <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
 	   integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
 	   crossorigin=""></script>
+	  <!-- Bootstrap: Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<!--ionicons -->
+		<script src="leaflet-awesome/leaflet.awesome-markers.js"></script>		
 	
 	<style>
         body {
@@ -39,7 +53,24 @@
 			{
 				return mymap.getBounds(); 
 			}
-
+			
+			var red = L.icon({iconUrl:'markers/red.png',iconAnchor:[15,41],popupAnchor:  [0, -41]});
+			var blue = L.icon({iconUrl:'markers/blue.png',iconAnchor:[15,41],popupAnchor:  [0, -41]});
+			var green = L.icon({iconUrl:'markers/green.png',iconAnchor:[15,41],popupAnchor:  [0, -41]});
+			var pink = L.icon({iconUrl:'markers/pink.png',iconAnchor:[15,41],popupAnchor:  [0, -41]});
+			var orange = L.icon({iconUrl:'markers/orange.png',iconAnchor:[15,41],popupAnchor:  [0, -41]});
+			
+			//L.marker([49.280224, -122.917147],{icon:red}).addTo(mymap).bindPopup("<b>aa</b><br /><br>at: ").openPopup();
+			//var redMarker = L.AwesomeMarkers.icon({icon: 'coffee',markerColor: 'red'});
+			//L.marker([  49.280224, -122.917147 ]).addTo(mymap).bindPopup("<b>aa</b><br /><br>at: ").openPopup();
+			// var blueMarker = L.AwesomeMarkers.icon({icon: 'coffee',markerColor: 'blue'});
+			// var greenMarker = L.AwesomeMarkers.icon({icon: 'coffee',markerColor: 'green'});
+			// var blackMarker = L.AwesomeMarkers.icon({icon: 'coffee',markerColor: 'black'});
+			// var whiteMarker = L.AwesomeMarkers.icon({icon: 'coffee',markerColor: 'white'});  
+			//L.marker([ 49.280224, -122.917147]).addTo(mymap);
+			
+			//L.marker([ 49.280224, -122.917147]).addTo(mymap)
+			//-123.30 49.10, -122.73 49.10, -122.73 49.3, -123.30 49.3, -123.30 49.10
 			// L.marker([ 49.280224, -122.917147]).addTo(mymap)
 			// 	.bindPopup("<b>Twitter Content</b><br />OMG, WOWZERS").openPopup();
 
