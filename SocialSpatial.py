@@ -26,30 +26,36 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		#database connection dock
 		self.dbconn_dock = dbconn.DBConn_ui()
 		self.addDockWidget(Qt.LeftDockWidgetArea,self.dbconn_dock)
+		self.dbconn_dock.visibilityChanged.connect(self.showhide_dbconn)
 
 		#wordlist dock
 		self.wordlist_dock = wordlist.Wordlist_ui()
 		self.addDockWidget(Qt.RightDockWidgetArea,self.wordlist_dock)
+		self.wordlist_dock.visibilityChanged.connect(self.showhide_wordlist)
 
 		#wordnet dock tool
 		self.wordnet_dock = wordnet.Wordnet_ui()
 		self.addDockWidget(Qt.RightDockWidgetArea,self.wordnet_dock)
 		self.wordnet_dock.hide()
+		self.wordnet_dock.visibilityChanged.connect(self.showhide_wordnet)
 		
 		#googleknowedgegraph dock tool
 		self.googleknowledgegraph_dock = googleknowledgegraph.GoogleKnowledgeGraph_ui()
 		self.addDockWidget(Qt.RightDockWidgetArea,self.googleknowledgegraph_dock)
 		self.googleknowledgegraph_dock.hide()
+		self.googleknowledgegraph_dock.visibilityChanged.connect(self.showhide_googleknowledgegraph)
 
 		#wordgeography dock tool
 		self.wordgeography_dock = wordgeography.WordGeography_ui(self.wordlist_dock)
 		self.addDockWidget(Qt.RightDockWidgetArea,self.wordgeography_dock)
 		self.wordgeography_dock.hide()
+		self.wordgeography_dock.visibilityChanged.connect(self.showhide_wordgeography)
 
 		#post samples dock tool
 		self.postsamples_dock = postsamples.PostSamples_ui(self.wordlist_dock)
 		self.addDockWidget(Qt.RightDockWidgetArea,self.postsamples_dock)
 		self.postsamples_dock.hide()
+		self.postsamples_dock.visibilityChanged.connect(self.showhide_postsamples)
 
 		#menu item control
 		self.actionDatabase_Connection.activated.connect(self.showhide_dbconn)
@@ -60,8 +66,8 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		self.actionPost_Samples.activated.connect(self.showhide_postsamples)
 		
 		#set initial visibility or each dock item
-		self.dbconn_visible = True
-		self.wordlist_visible = True
+		self.dbconn_visible = False
+		self.wordlist_visible = False
 		self.wordnet_visible = False
 		self.googleknowledgegraph_visible = False
 		self.wordgeography_visible = False
