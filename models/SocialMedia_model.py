@@ -47,7 +47,7 @@ class SocialMedia_posts(object):
 			lon = str(coords["coordinates"][0])
 			
 			user = i[2]
-			print(i[3])
+			# print(i[3])
 			time = i[3]
 			text = i[0]
 

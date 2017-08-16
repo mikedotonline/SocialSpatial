@@ -31,6 +31,10 @@ class PostSamples_ui(QtGui.QDockWidget, postsamples.Ui_PostSamples_DockWidget):
 
 	def addToMap (self):
 		pass
+		#get the current social media posts
+		# create a signal when the add to map button is pressed
+		# create a touple of (socialmedia_posts, color)
+		# emit object
 
 	def get_posts(self):
 		
