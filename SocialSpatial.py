@@ -16,6 +16,7 @@ import viewmodels.wordlist as wordlist
 import viewmodels.googleknowledgegraph as googleknowledgegraph
 import viewmodels.wordgeography as wordgeography
 import viewmodels.postsamples as postsamples
+import viewmodels.topicmodel as topicmodel
 
 
 class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
@@ -57,6 +58,12 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		self.postsamples_dock.hide()
 		self.postsamples_dock.visibilityChanged.connect(self.showhide_postsamples)
 
+		#topicmodel dock tool
+		self.topicmodel_dock = topicmodel.TopicModel_ui()
+		self.addDockWidget(Qt.RightDockWidgetArea,self.topicmodel_dock)
+		self.topicmodel_dock.hide()
+		self.topicmodel_dock.visibilityChanged.connect(self.showhide_topicmodel)
+
 		#menu item control
 		self.actionDatabase_Connection.activated.connect(self.showhide_dbconn)
 		self.actionWordnet.activated.connect(self.showhide_wordnet)
@@ -64,6 +71,7 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		self.actionWord_List.activated.connect(self.showhide_wordlist)
 		self.actionWord_Map.activated.connect(self.showhide_wordgeography)
 		self.actionPost_Samples.activated.connect(self.showhide_postsamples)
+		self.actionTopic_Modelling.activated.connect(self.showhide_topicmodel)
 		
 		#set initial visibility or each dock item
 		self.dbconn_visible = False
@@ -72,6 +80,7 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		self.googleknowledgegraph_visible = False
 		self.wordgeography_visible = False
 		self.postsamples_visible = False
+		self.topicmodel_visible = False
 
 		#create the signal connection
 		self.wordnet_dock.procStart.connect(self.wordlist_dock.on_procStart)
@@ -135,7 +144,15 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		else:
 			self.postsamples_dock.show()
 			self.postsamples_visible=True
-			self.postsamples_dock.raise_()				
+			self.postsamples_dock.raise_()
+
+	def showhide_topicmodel(self):
+		if self.topicmodel_visible==True:
+			self.topicmodel_dock.hide()
+			self.topicmodel_visible=False
+		else:
+			self.topicmodel_dock.show()
+			self.topicmodel_visible=True				
 
 
 def main():
