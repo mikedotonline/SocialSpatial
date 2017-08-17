@@ -1,0 +1,34 @@
+{
+	"Name":"Topic Model 1",
+	"Topics":
+		{
+			"TopicNumber":1,
+			"Topic Words":
+				{
+					"Topic 1":
+						{
+							"Word":"Cheetos",
+							"Probability":0.03,
+						},
+					"Topic 2":
+						{
+							"Word":"Ice Cream",
+							"Porbability":0.02,
+						},
+				},			
+			"Topic Number":2,
+			"Topic Words":
+				{
+					"Word 1":
+					{
+						"Word":"Beer",
+						"Probability":0.1,
+					},
+					"Word 2":
+					{
+						"Word":"IPA",
+						"Probability":0.001,
+					},
+				},
+		}
+}

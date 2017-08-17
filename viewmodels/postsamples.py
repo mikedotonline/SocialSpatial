@@ -4,7 +4,8 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 import models.wordlist_model as wordlist_model
 import models.databaseConnection_model as db_model
-import models.SocialMedia_model as socialmedia 
+import models.SocialMedia_model as socialmedia
+import json 
 #import psycopg2
 
 import ui.postsamples as postsamples
@@ -42,6 +43,8 @@ class PostSamples_ui(QtGui.QDockWidget, postsamples.Ui_PostSamples_DockWidget):
 			sm.append(self.social_media.posts[i.row()])
 		s = (sm,self.markerColor_comboBox.currentText())		
 		self.sendSocialMedia.emit(s)
+
+
 
 
 

@@ -85,12 +85,15 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		#create the signal connection
 		self.wordnet_dock.procStart.connect(self.wordlist_dock.on_procStart)
 		self.googleknowledgegraph_dock.procStart.connect(self.wordlist_dock.on_procStart)
-		self.wordlist_dock.selectedWords.connect(self.wordgeography_dock.on_selectedWords)
-		self.dbconn_dock.connection.connect(self.wordgeography_dock.on_connection)
-		self.wordlist_dock.selectedWords.connect(self.postsamples_dock.on_selectedWords)
-		self.dbconn_dock.connection.connect(self.postsamples_dock.on_connection)
+		self.wordlist_dock.selectedWords.connect(self.wordgeography_dock.on_selectedWords)	#send selectedWords to 	wordgeography
+		self.wordlist_dock.selectedWords.connect(self.postsamples_dock.on_selectedWords)	#						postsamples
+		self.wordlist_dock.selectedWords.connect(self.topicmodel_dock.on_selectedWords)		#						topic model
+		self.dbconn_dock.connection.connect(self.wordgeography_dock.on_connection)			#send db_conn to 		wordgeography_dock
+		self.dbconn_dock.connection.connect(self.postsamples_dock.on_connection)			#						postsamples
+		self.dbconn_dock.connection.connect(self.topicmodel_dock.on_connection)				#						topicmodel
 		self.wordgeography_dock.spatialExtent.connect(self.postsamples_dock.on_extent)
 		self.postsamples_dock.sendSocialMedia.connect(self.wordgeography_dock.on_samples)
+
 	def showhide_dbconn(self):
 		if self.dbconn_visible==True:
 			self.dbconn_dock.hide()
