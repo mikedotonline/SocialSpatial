@@ -16,61 +16,57 @@ class TopicModel(object):
 	def __init__(self,_topics,_topicwords,_passes,_alpha,_update,_stopwords):		
 		
 		#params
-		self.num_topics = _topics 			#int
-		self.num_topicwords = _topicwords 	#int
-		self.num_passes = _passes 			#int
-		self.num_alpha = _alpha 			#float
-		self.num_update = _update			#int
+		self.num_topics = int(_topics) 			#int
+		self.num_topicwords = int(_topicwords) 	#int
+		self.num_passes = int(_passes) 			#int
+		self.num_alpha = float(_alpha) 			#float
+		self.num_update = int(_update)			#int
 		self.stopwords=_stopwords 			#list
 		
-		self.socialmedia=None 				#SocialMedia_Posts[SocialMedia]
+		self.social_data=None 				#SocialMedia_Posts[SocialMedia]
 		self.topics = None 					#dictionary
 		self.area_topics = None
 
 	def get_topics (self, db_conn, _likeString, _spatialBoundary):
-
-		self.social_media = Socialmedia(db_conn,_spatialBoundary,_likestring,limit=0)
-		print("data recieved, starting gensim operations")
+		self.social_data = Socialmedia.SocialMedia_posts()
+		lim="100"
+		self.social_data.get_social_from_database(db_conn,_spatialBoundary,_likeString,lim)
+		print("%s tweets recieved, starting gensim operations" % len(self.social_data.posts))
 		model = self.do_gensim()
 
 		topics = self.format_topics(model.show_topics(num_topics=self.num_topics,num_words=self.num_topicwords,log=False,formatted=False))
 
 		return topics
 	
-	def format_topics(_model):
-		#incomming model in forms of list[list[tuple()]] model[topic(word,prob)]
-		topic_model={}
-		topic_model["Name"] = "Test Topic Model"
-		i=0
-		for topics in _model:
-			#for each topic in the Gensim Model topics
-			topics["Topic Number "] = str(i)
-			for topic in topics:
-				topic_d = {}
-				j=0
-				for topic_word in topic:
-					d_fromTuple = {}
-					d_fromTuple["word"+str(j)] = topic_word[0] #look up the syntax of the gensim.model return function
-					d_fromTuple["probability"]=topic_word[1]
-					j+=1
-				topic_d["Word "+str(i)]=d_fromTuple
-			i+=1			
-			#this space is where we set the Topic Number			
-			topics["Topics Words"] = topic_d
-		topic_model["Topics"] = topics
+	def format_topics(self,_model):
+	    model = {"name":"testmodel"}
+	    topics = {}
+	    t=0
+	    for i in _model:
+	        #print ("topic") 
+	        #print i #touple (#,topic
+	        dT = {}
+	        r=0
+	        for j in i[1]: #the topic in each tuple
+	            d = {"word":str(j[0]),"prob":str(j[1])}
 
-		return topic_model
+	            dT["Topic Word"+str(r)] = d
+	            r+=1
+	        topics["topic"+str(t)]=dT
+	        t+=1
+	    model["topics"]=topics
+
+	    return model
 
 
-
-
-	def do_gensim():
+	def do_gensim(self):
 		logging.info("Starting GENSIM code")
 		documents=[]
-		logging.info("INCOMMING TWEET CORPUS SIZE: "+str(len(social_data.posts)))
-		for tweet in social_data.posts:
+		logging.info("INCOMMING TWEET CORPUS SIZE: "+str(len(self.social_data.posts)))
+		for tweet in self.social_data.posts:
 			#tweet = str(curr.fetchone()[0])
-			documents.append(' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)|(gt)"," ",tweet.text.split()).lower()))
+			#print("doc:%s" %tweet.text)
+			documents.append(' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)|(gt)"," ",tweet.text).split()).lower())
 		
 		logging.info("CORPUS SIZE AFTER REGEX: "+str(len(documents)))
 		
@@ -80,6 +76,7 @@ class TopicModel(object):
 		for w in self.stopwords:
 			s+=w+" "
 		stoplist = set(s.split())
+		#print("stoplist %s" % str(stoplist))
 		#logging.info("s:\n\t"+s)
 		#logging.info("stopwords"+str([i for i in self.builder.get_object('TopicStopwords_Listbox').get(0,tk.END)]))
 		#logging.info(stoplist)
@@ -114,6 +111,6 @@ class TopicModel(object):
 
 
 class Area_TopicModel(object):
-	def __init__(self, topicData)
+	def __init__(self, topicData):
 		self.area
 

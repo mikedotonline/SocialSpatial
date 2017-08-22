@@ -1,16 +1,16 @@
 {
-	"Name":"Topic Model 1",
+	"Name":"Topic Model",
 	"Topics":
 		{
 			"TopicNumber":1,
-			"Topic Words":
+			"Topic words":
 				{
-					"Topic 1":
+					"Word 1":
 						{
 							"Word":"Cheetos",
 							"Probability":0.03,
 						},
-					"Topic 2":
+					"Word 2":
 						{
 							"Word":"Ice Cream",
 							"Porbability":0.02,
