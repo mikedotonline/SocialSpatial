@@ -22,10 +22,10 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_cartogram_dock(object):
-    def setupUi(self, cartogram_dock):
-        cartogram_dock.setObjectName(_fromUtf8("cartogram_dock"))
-        cartogram_dock.resize(838, 608)
+class Ui_Cartogram_dock(object):
+    def setupUi(self, Cartogram_dock):
+        Cartogram_dock.setObjectName(_fromUtf8("Cartogram_dock"))
+        Cartogram_dock.resize(838, 608)
         self.dockWidgetContents = QtGui.QWidget()
         self.dockWidgetContents.setObjectName(_fromUtf8("dockWidgetContents"))
         self.verticalLayout_2 = QtGui.QVBoxLayout(self.dockWidgetContents)
@@ -71,7 +71,7 @@ class Ui_cartogram_dock(object):
         self.run_pushButton.setObjectName(_fromUtf8("run_pushButton"))
         self.horizontalLayout.addWidget(self.run_pushButton)
         self.progressBar = QtGui.QProgressBar(self.verticalGroupBox1)
-        self.progressBar.setProperty("value", 24)
+        self.progressBar.setProperty("value", 0)
         self.progressBar.setObjectName(_fromUtf8("progressBar"))
         self.horizontalLayout.addWidget(self.progressBar)
         self.verticalLayout_5.addLayout(self.horizontalLayout)
@@ -85,19 +85,19 @@ class Ui_cartogram_dock(object):
         self.verticalLayout_6.addWidget(self.preview_graphicsView)
         self.verticalLayout.addWidget(self.verticalGroupBox_2)
         self.verticalLayout_2.addWidget(self.verticalGroupBox)
-        cartogram_dock.setWidget(self.dockWidgetContents)
+        Cartogram_dock.setWidget(self.dockWidgetContents)
 
-        self.retranslateUi(cartogram_dock)
-        QtCore.QMetaObject.connectSlotsByName(cartogram_dock)
+        self.retranslateUi(Cartogram_dock)
+        QtCore.QMetaObject.connectSlotsByName(Cartogram_dock)
 
-    def retranslateUi(self, cartogram_dock):
-        cartogram_dock.setWindowTitle(_translate("cartogram_dock", "Topic / Word Cartogram", None))
-        self.verticalGroupBox.setTitle(_translate("cartogram_dock", "Parameters", None))
-        self.label.setText(_translate("cartogram_dock", "Input Shp", None))
-        self.label_2.setText(_translate("cartogram_dock", "Image Size (px^2)", None))
-        self.label_3.setText(_translate("cartogram_dock", "Font", None))
-        self.label_4.setText(_translate("cartogram_dock", "Output file", None))
-        self.verticalGroupBox1.setTitle(_translate("cartogram_dock", "Control", None))
-        self.run_pushButton.setText(_translate("cartogram_dock", "Run", None))
-        self.verticalGroupBox_2.setTitle(_translate("cartogram_dock", "Preview", None))
+    def retranslateUi(self, Cartogram_dock):
+        Cartogram_dock.setWindowTitle(_translate("Cartogram_dock", "Topic / Word Cartogram", None))
+        self.verticalGroupBox.setTitle(_translate("Cartogram_dock", "Parameters", None))
+        self.label.setText(_translate("Cartogram_dock", "Input Shp", None))
+        self.label_2.setText(_translate("Cartogram_dock", "Image Size (px^2)", None))
+        self.label_3.setText(_translate("Cartogram_dock", "Font", None))
+        self.label_4.setText(_translate("Cartogram_dock", "Output file", None))
+        self.verticalGroupBox1.setTitle(_translate("Cartogram_dock", "Control", None))
+        self.run_pushButton.setText(_translate("Cartogram_dock", "Run", None))
+        self.verticalGroupBox_2.setTitle(_translate("Cartogram_dock", "Preview", None))
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>cartogram_dock</class>
- <widget class="QDockWidget" name="cartogram_dock">
+ <class>Cartogram_dock</class>
+ <widget class="QDockWidget" name="Cartogram_dock">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -83,7 +83,7 @@
             <item>
              <widget class="QProgressBar" name="progressBar">
               <property name="value">
-               <number>24</number>
+               <number>0</number>
               </property>
              </widget>
             </item>

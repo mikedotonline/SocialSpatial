@@ -17,6 +17,7 @@ import viewmodels.googleknowledgegraph as googleknowledgegraph
 import viewmodels.wordgeography as wordgeography
 import viewmodels.postsamples as postsamples
 import viewmodels.topicmodel as topicmodel
+import viewmodels.cartogram as cartogram
 
 
 class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
@@ -64,6 +65,12 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		self.topicmodel_dock.hide()
 		self.topicmodel_dock.visibilityChanged.connect(self.showhide_topicmodel)
 
+		#cartogram dock tool
+		self.cartogram_dock = cartogram.Cartogram_ui()
+		self.addDockWidget(Qt.RightDockWidgetArea,self.cartogram_dock)
+		self.cartogram_dock.hide()
+		self.cartogram_dock.visibilityChanged.connect(self.showhide_cartogram)
+
 		#menu item control
 		self.actionDatabase_Connection.activated.connect(self.showhide_dbconn)
 		self.actionWordnet.activated.connect(self.showhide_wordnet)
@@ -72,6 +79,7 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		self.actionWord_Map.activated.connect(self.showhide_wordgeography)
 		self.actionPost_Samples.activated.connect(self.showhide_postsamples)
 		self.actionTopic_Modelling.activated.connect(self.showhide_topicmodel)
+		self.actionWordle_Map.activated.connect(self.showhide_cartogram)
 		
 		#set initial visibility or each dock item
 		self.dbconn_visible = False
@@ -81,6 +89,7 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		self.wordgeography_visible = False
 		self.postsamples_visible = False
 		self.topicmodel_visible = False
+		self.cartogram_visible = False
 
 		#create the signal connection
 		self.wordnet_dock.procStart.connect(self.wordlist_dock.on_procStart)
@@ -155,8 +164,15 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 			self.topicmodel_visible=False
 		else:
 			self.topicmodel_dock.show()
-			self.topicmodel_visible=True				
-
+			self.topicmodel_visible=True
+	def showhide_cartogram(self):
+		if self.cartogram_visible==True:
+			self.cartogram_dock.hide()
+			self.cartogram_visible=False
+		else:
+			self.cartogram_dock.show()
+			self.cartogram_visible=True
+			self.cartogram_dock.raise_()
 
 def main():
 	app = QtGui.QApplication(sys.argv)
