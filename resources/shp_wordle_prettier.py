@@ -45,7 +45,7 @@ class TopicWords (object):
 
 
 		#Connect to postgres
-		connString = 
+		
 		# select only three nHoods to keep problem size reasonable for now....
 		selectString = "SELECT * FROM "+tableName
 		logging.info("connecting to database")		
@@ -289,10 +289,10 @@ class DrawSpatial(object):
 		buf = surface.get_data()									# raw binary data representing the surface
 		Z = np.frombuffer(buf, np.uint8)							# Interpret a buffer as a 1-dimensional array.
 		Z.shape = (self.xSize,self.ySize,4)
-		#y = Z[...,...,0].reshape(self.ySize,self.xSize)				# shape the buffer to the size of the surface in pixels. the array is the values for each pixel from 0-255. empty space is represented by 0
+		y = Z[:,...,0].reshape(self.ySize,self.xSize)				# shape the buffer to the size of the surface in pixels. the array is the values for each pixel from 0-255. empty space is represented by 0
 		
 		logging.info("poly drawing took:"+str(time.time()-start))
-		return Z#Z[...,...,0] #self.np_crop(Z,0)									# jump to crop method!
+		return y#Z[...,:,0] #self.np_crop(Z,0)									# jump to crop method!
 
 	def shapefile_to_PNG(self,s):
 		''' shapefile_to_PNG
@@ -487,7 +487,7 @@ class DrawSpatial(object):
 		Z = np.frombuffer(buf, np.uint8)							# Interpret a buffer as a 1-dimensional array.
 		Z.shape = (self.xSize,self.ySize,4)
 		y = Z[...,...,0].reshape(self.ySize,self.xSize)									# shape the buffer to the size of the surface in pixels. the array is the values for each pixel from 0-255. empty space is represented by 0
-		return Z[...,...,0] #self.np_crop(Z,0)									# jump to crop method!
+		return y#Z[...,...,0] #self.np_crop(Z,0)									# jump to crop method!
 
 class Word(object):
 	'''
@@ -857,7 +857,7 @@ class Shp_WordCloud(object):
 
 
 	def show(self):
-		self.generate(1000,1000)
+		self.generate(5000,5000)
 		self.save()
 		# currently too big, so just don't print to screen for now...
 		# self.window = pyglet.window.Window(self.image.width,self.image.height)
