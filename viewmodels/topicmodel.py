@@ -86,9 +86,11 @@ class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 				topics = topicModel.get_topics(self.db_connection,likeString,spatialBoundary,area[0])
 				self.area_topics.update(topics)
 				self.add_tree_items(topics)
+
 			
 		#for testing. just dump the final dictionary to a file
 		with open('area_topics_dict.json','w') as outfile:
+			json.dump(self.area_topics,outfile,ensure_ascii=False)
 
 		
 				
