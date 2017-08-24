@@ -58,5 +58,9 @@ class Cartogram_ui(QtGui.QDockWidget, cartogram.Ui_Cartogram_dock):
 		# augment the topic model data into a list of words that the wordle can sue
 
 	@QtCore.pyqtSlot(dict)
+<<<<<<< HEAD
 	def on_areatopics(self,message):
+=======
+	def on_areatopics(self.message):
+>>>>>>> origin/master
 		self.areatopics = message
