@@ -50,7 +50,7 @@ class TopicWords (object):
 
 
 		#Connect to postgres
-		connString = "dbname='db_***REMOVED***' user='***REMOVED***' host='***REMOVED***' port='***REMOVED***' password='***REMOVED***'"
+		
 		# select only three nHoods to keep problem size reasonable for now....		
 		selectString = "SELECT * FROM "+tableName
 		logging.info("connecting to database")		

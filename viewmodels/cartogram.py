@@ -56,3 +56,7 @@ class Cartogram_ui(QtGui.QDockWidget, cartogram.Ui_Cartogram_dock):
 	def prepare_words(self, _topicModel):
 		pass
 		# augment the topic model data into a list of words that the wordle can sue
+
+	@QtCore.pyqtSlot(dict)
+	def on_areatopics(self.message):
+		self.areatopics = message

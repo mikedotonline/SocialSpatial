@@ -21,7 +21,7 @@ import ui.topicmodel as topicmodel
 class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 	
 	#signal of the selected words
-	#selectedWords = QtCore.pyqtSignal(list)
+	area_topics_signal = QtCore.pyqtSignal(dict)
 	
 	def __init__(self,parent=None):
 		super(self.__class__, self).__init__(parent)
@@ -53,7 +53,9 @@ class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 
 
 	def save_stoplist(_filename,d):
-		pass		
+		#for testing. just dump the final dictionary to a file
+		with open(self.topicModelFile_lineEdit.text(),'w') as outfile:
+			json.dump(self.area_topics,outfile,ensure_ascii=False)		
 
 	def run_model(self):
 		likeString =''
@@ -91,6 +93,9 @@ class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 		#for testing. just dump the final dictionary to a file
 		with open('area_topics_dict.json','w') as outfile:
 			json.dump(self.area_topics,outfile,ensure_ascii=False)
+
+		self.send_topics(self.area_topics)
+		
 
 		
 				
@@ -161,3 +166,8 @@ class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 		self.db_connection = message
 		#print(self.db_connection[1])
 		self.raise_()
+
+	@QtCore.pyqtSlot()
+	def send_topics(self,_areatopics):
+		#emit a signal that lets the cartogram access the topic model
+		self.area_topics_signal.emit(_areatopics)

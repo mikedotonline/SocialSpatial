@@ -102,6 +102,7 @@ class SocialSpatialApp(QtGui.QMainWindow, ui.mainwindow.Ui_MainWindow):
 		self.dbconn_dock.connection.connect(self.topicmodel_dock.on_connection)				#						topicmodel
 		self.wordgeography_dock.spatialExtent.connect(self.postsamples_dock.on_extent)
 		self.postsamples_dock.sendSocialMedia.connect(self.wordgeography_dock.on_samples)
+		self.topicmodel_dock.area_topics_signal.connect(self.cartogram_dock.on_areatopics)
 
 	def showhide_dbconn(self):
 		if self.dbconn_visible==True:
