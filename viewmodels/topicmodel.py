@@ -4,11 +4,15 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
 import json
+import psycopg2
 
 import models.wordlist_model as wordlist_model
 import models.databaseConnection_model as db_model
 import models.SocialMedia_model as socialmedia 
 import models.topicmodel_model as TopicModel  
+
+import logging #intelligent logging....
+logging.basicConfig(level=logging.debug) # optional argument filename='example.log'
 
 from pprint import pprint as pp
 
@@ -52,18 +56,43 @@ class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 		pass		
 
 	def run_model(self):
-		#pass
 		likeString =''
-		for w in self.selectedWords:
-			likeString+= str(self.db_connection[1].socialdata)+" LIKE (\'%"+w+"%\') OR "			
-		likeString = likeString[:-3]
 		
-		spatialBoundary = "ST_Contains(ST_TRANSFORM("+self.db_connection[1].areatable+"."+self.db_connection[1].areageom+",4326),"+self.db_connection[1].socialtable+"."+self.db_connection[1].socialgeom+")"
+		#set up the social media selection parameters 
+		for w in self.selectedWords: likeString+= str(self.db_connection[1].socialdata)+" LIKE (\'%"+w+"%\') OR "			
+		likeString = likeString[:-3]
+				
 
+		# Topic Modelling Code #
 		topicModel = TopicModel.TopicModel(self.topics_lineEdit.text(),self.words_lineEdit.text(),self.passes_lineEdit.text(),self.alpha_lineEdit.text(),self.update_lineEdit.text(),self.stopwords)
-		topics = topicModel.get_topics(self.db_connection,likeString,spatialBoundary)
-		#print(topics)
-		self.add_tree_items(topics)
+		# Create a topic model for the data 
+		if self.area_comboBox == "No":
+			spatialBoundary = "ST_Contains(ST_TRANSFORM("+self.db_connection[1].areatable+"."+self.db_connection[1].areageom+",4326),"+self.db_connection[1].socialtable+"."+self.db_connection[1].socialgeom+")"
+			topics = topicModel.get_topics(self.db_connection,likeString,spatialBoundary,self.db_connection[1].areatable)							
+		else:	
+			selectString = "SELECT "+self.db_connection[1].arealabel+","+self.db_connection[1].areageom+" FROM "+self.db_connection[1].areatable # get the areas that we are going to work with
+			#logging.info("connecting to database")		
+			#logging.info("creating cursor")
+			#cursor for reading the nHoods from the tor_nhoods table
+			nHoodCurr = self.db_connection[0].cursor()
+			#get data from postgres table
+			#logging.info("executing select statement")
+			nHoodCurr.execute(selectString)
+			self.words=[]
+			self.area_topics={}
+			for area in nHoodCurr:
+				#spatialBoundary = "ST_Contains(ST_TRANSFORM("+self.db_connection[1].areatable+"."+self.db_connection[1].areageom+",4326),"+self.db_connection[1].socialtable+"."+self.db_connection[1].socialgeom+")"
+				spatialBoundary = "ST_Contains(ST_TRANSFORM("+self.db_connection[1].areatable+"."+self.db_connection[1].areageom+",4326),"+self.db_connection[1].socialtable+"."+self.db_connection[1].socialgeom+") and "+self.db_connection[1].areatable+"."+self.db_connection[1].arealabel+" = \'"+area[0]+"\'"
+				topics = topicModel.get_topics(self.db_connection,likeString,spatialBoundary,area[0])
+				self.area_topics.update(topics)
+				self.add_tree_items(topics)
+			
+		#for testing. just dump the final dictionary to a file
+		with open('area_topics_dict.json','w') as outfile:
+
+		
+				
+
 
 	def add_tree_items(self, _topics):		
 		#set number of columns

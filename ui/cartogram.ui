@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>838</width>
+    <width>277</width>
     <height>608</height>
    </rect>
   </property>
@@ -55,13 +55,28 @@
           <widget class="QLineEdit" name="font_lineEdit"/>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="size_lineEdit"/>
+          <widget class="QLineEdit" name="size_lineEdit">
+           <property name="text">
+            <string>5000</string>
+           </property>
+           <property name="maxLength">
+            <number>6</number>
+           </property>
+          </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLineEdit" name="shp_lineEdit"/>
+          <widget class="QLineEdit" name="shp_lineEdit">
+           <property name="text">
+            <string>data\van_nhoods\van_nhoods.shp</string>
+           </property>
+          </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLineEdit" name="output_lineEdit"/>
+          <widget class="QLineEdit" name="output_lineEdit">
+           <property name="text">
+            <string>data\cartogram.png</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -99,7 +114,17 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
-           <widget class="QGraphicsView" name="preview_graphicsView"/>
+           <widget class="QLabel" name="preview_label">
+            <property name="maximumSize">
+             <size>
+              <width>400</width>
+              <height>400</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>

@@ -9,6 +9,7 @@ import json
 # import models.databaseConnection_model as db_model
 # import models.SocialMedia_model as socialmedia 
 import models.topicmodel_model as TopicModel  
+import models.shapefile_model as shapefile 
 
 from pprint import pprint as pp
 
@@ -34,8 +35,11 @@ class Cartogram_ui(QtGui.QDockWidget, cartogram.Ui_Cartogram_dock):
 
 		self.run_pushButton.clicked.connect(self.run)
 
+		pixmap = QPixmap('data\cartogram_example.jpg')
+		self.preview_label.setPixmap(pixmap)
+
 	def run(self):
-		s = wordle.Shapefile('data\\van_nhoods\\van_nhoods.shp')
+		s = shapefile.Shapefile('data\\van_nhoods\\van_nhoods.shp')
 		# Dummy list of wrods for debugging
 
 		#real words from postgres database
@@ -43,6 +47,12 @@ class Cartogram_ui(QtGui.QDockWidget, cartogram.Ui_Cartogram_dock):
 		t = wordle.TopicWords(tableName)
 		words = t.words
 
+		#words = prepare_words(topcis)
+
 		cloud = wordle.Shp_WordCloud(words,s)
 		cloud.show()
 
+
+	def prepare_words(self, _topicModel):
+		pass
+		# augment the topic model data into a list of words that the wordle can sue

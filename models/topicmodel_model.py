@@ -2,7 +2,7 @@ from gensim import corpora, models
 import re
 import time
 
-import psycopg2
+#import psycopg2	social media gathering is done by the social media data model
 import models.databaseConnection_model as DB_model
 import models.SocialMedia_model as Socialmedia 
 
@@ -27,19 +27,19 @@ class TopicModel(object):
 		self.topics = None 					#dictionary
 		self.area_topics = None
 
-	def get_topics (self, db_conn, _likeString, _spatialBoundary):
+	def get_topics (self, db_conn, _likeString, _spatialBoundary,_name):
 		self.social_data = Socialmedia.SocialMedia_posts()
 		lim="100"
 		self.social_data.get_social_from_database(db_conn,_spatialBoundary,_likeString,lim)
 		print("%s tweets recieved, starting gensim operations" % len(self.social_data.posts))
 		model = self.do_gensim()
 
-		topics = self.format_topics(model.show_topics(num_topics=self.num_topics,num_words=self.num_topicwords,log=False,formatted=False))
+		topics = self.format_topics(model.show_topics(num_topics=self.num_topics,num_words=self.num_topicwords,log=False,formatted=False),_name)
 
 		return topics
 	
-	def format_topics(self,_model):
-	    model = {"name":"testmodel"}
+	def format_topics(self,_model,_name):
+	    model = {"name":_name}
 	    topics = {}
 	    t=0
 	    for i in _model:
@@ -108,9 +108,4 @@ class TopicModel(object):
 		model = models.ldamodel.LdaModel(corpus_tfidf, id2word=dictionary, alpha=self.num_alpha, num_topics=self.num_topics, update_every=self.num_update, passes=self.num_passes)
 
 		return model
-
-
-class Area_TopicModel(object):
-	def __init__(self, topicData):
-		self.area
 
