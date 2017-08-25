@@ -27,6 +27,7 @@ class TopicModel(object):
 		self.topics = None 					#dictionary
 		self.area_topics = None
 
+
 	def get_topics (self, db_conn, _likeString, _spatialBoundary,_name):
 		self.social_data = Socialmedia.SocialMedia_posts()
 		lim="100"
@@ -39,7 +40,7 @@ class TopicModel(object):
 		return topics
 	
 	def format_topics(self,_model,_name):
-	    model = {"name":_name}
+	    model = {"name":_name,"num_topics":self.num_topics,"words_per_topic":self.num_topicwords,"passes":self.num_passes,"alpha":self.num_alpha,"update":self.num_update}
 	    topics = {}
 	    t=0
 	    for i in _model:
@@ -108,4 +109,19 @@ class TopicModel(object):
 		model = models.ldamodel.LdaModel(corpus_tfidf, id2word=dictionary, alpha=self.num_alpha, num_topics=self.num_topics, update_every=self.num_update, passes=self.num_passes)
 
 		return model
+
+
+class Area_topic_model():
+	def __init__(self):		
+		self.topics={}
+
+	
+	def load(self,filename):
+		topics={}
+		with open(filename) as infile:
+			d = json.load(infile)
+		return d 
+	def save(self,filename):
+		with open(filename,'w') as outfile:
+			json.dump(self.topicmodel,outfile,ensure_ascii=False)
 

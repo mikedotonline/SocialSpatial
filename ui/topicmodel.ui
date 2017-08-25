@@ -145,12 +145,12 @@
               <widget class="QComboBox" name="area_comboBox">
                <item>
                 <property name="text">
-                 <string>No</string>
+                 <string>Yes</string>
                 </property>
                </item>
                <item>
                 <property name="text">
-                 <string>Yes</string>
+                 <string>No</string>
                 </property>
                </item>
               </widget>
@@ -214,7 +214,7 @@
            <item>
             <widget class="QLineEdit" name="topicModelFile_lineEdit">
              <property name="text">
-              <string>topicmodel.json</string>
+              <string>data\topicmodel.json</string>
              </property>
             </widget>
            </item>

@@ -38,6 +38,7 @@ class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 		# self.area_comboBox.currentItemChanged.connect(self.set_spatialArea)
 
 		self.topicmodel = None
+		self.area_topics = None
 		self.db_connection = None
 		self.selectedWords = None
 
@@ -52,7 +53,7 @@ class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 		return d['stopwords'] #list
 
 
-	def save_stoplist(_filename,d):
+	def save_stoplist(self,d):
 		#for testing. just dump the final dictionary to a file
 		with open(self.topicModelFile_lineEdit.text(),'w') as outfile:
 			json.dump(self.area_topics,outfile,ensure_ascii=False)		
@@ -64,15 +65,15 @@ class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 		for w in self.selectedWords: likeString+= str(self.db_connection[1].socialdata)+" LIKE (\'%"+w+"%\') OR "			
 		likeString = likeString[:-3]
 				
-
+		atopics={}
 		# Topic Modelling Code #
 		topicModel = TopicModel.TopicModel(self.topics_lineEdit.text(),self.words_lineEdit.text(),self.passes_lineEdit.text(),self.alpha_lineEdit.text(),self.update_lineEdit.text(),self.stopwords)
 		# Create a topic model for the data 
-		if self.area_comboBox == "No":
+		if str(self.area_comboBox.currentText()) == "No":
 			spatialBoundary = "ST_Contains(ST_TRANSFORM("+self.db_connection[1].areatable+"."+self.db_connection[1].areageom+",4326),"+self.db_connection[1].socialtable+"."+self.db_connection[1].socialgeom+")"
 			topics = topicModel.get_topics(self.db_connection,likeString,spatialBoundary,self.db_connection[1].areatable)							
 		else:	
-			selectString = "SELECT "+self.db_connection[1].arealabel+","+self.db_connection[1].areageom+" FROM "+self.db_connection[1].areatable # get the areas that we are going to work with
+			selectString = "SELECT "+self.db_connection[1].arealabel+","+self.db_connection[1].areageom+" FROM "+self.db_connection[1].areatable+" limit 3" # get the areas that we are going to work with
 			#logging.info("connecting to database")		
 			#logging.info("creating cursor")
 			#cursor for reading the nHoods from the tor_nhoods table
@@ -81,19 +82,21 @@ class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 			#logging.info("executing select statement")
 			nHoodCurr.execute(selectString)
 			self.words=[]
-			self.area_topics={}
+			
 			for area in nHoodCurr:
 				#spatialBoundary = "ST_Contains(ST_TRANSFORM("+self.db_connection[1].areatable+"."+self.db_connection[1].areageom+",4326),"+self.db_connection[1].socialtable+"."+self.db_connection[1].socialgeom+")"
 				spatialBoundary = "ST_Contains(ST_TRANSFORM("+self.db_connection[1].areatable+"."+self.db_connection[1].areageom+",4326),"+self.db_connection[1].socialtable+"."+self.db_connection[1].socialgeom+") and "+self.db_connection[1].areatable+"."+self.db_connection[1].arealabel+" = \'"+area[0]+"\'"
 				topics = topicModel.get_topics(self.db_connection,likeString,spatialBoundary,area[0])
-				self.area_topics.update(topics)
+				atopics.update(topics)
 				self.add_tree_items(topics)
 
 			
 		#for testing. just dump the final dictionary to a file
-		with open('area_topics_dict.json','w') as outfile:
-			json.dump(self.area_topics,outfile,ensure_ascii=False)
+		# with open('data\\area_topics_dict.json','w') as outfile:
+		# 	json.dump(self.area_topics,outfile,ensure_ascii=False)
 
+		self.area_topics = TopicModel.Area_topic_model()
+		self.area_topics.topics = atopics
 		self.send_topics(self.area_topics)
 		
 
@@ -106,7 +109,7 @@ class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 		self.topicModelResults_treeWidget.setColumnCount(len(_topics["topics"].keys()))
 		
 		#set names for columns
-		labels = ["topic"]
+		labels = ["Model Name"]
 		for i in range(0,len(_topics['topics'].keys())): 
 			labels.append("Word "+str(i)+" (Prob)")
 		self.topicModelResults_treeWidget.setHeaderLabels(labels)
@@ -142,12 +145,22 @@ class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 		pass
 
 	def load_model(self):
-		pass
+		t = TopicModel.Area_topic_model()
+		t.load(self.topicModelFile_lineEdit.text())
+		self.send_topics(t)
+
+
+		print("topic model loaded")
 
 	def save_model(self):
 		filename = str(self.topicModelFile_lineEdit.text())		
-		with open(filename,'w') as outfile:
-			json.dump(self.topicmodel,outfile,ensure_ascii=False)
+		if str(self.area_comboBox.currentText()) == "No":
+			with open(filename,'w') as outfile:
+				json.dump(self.topicmodel,outfile,ensure_ascii=False)
+		else:
+			with open(filename,'w') as outfile:
+				json.dump(self.area_topics,outfile,ensure_ascii=False)
+
 
 	def set_spatialArea(self):
 		if self.area_comboBox.currentItem() =="Yes":
@@ -170,4 +183,4 @@ class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 	@QtCore.pyqtSlot()
 	def send_topics(self,_areatopics):
 		#emit a signal that lets the cartogram access the topic model
-		self.area_topics_signal.emit(_areatopics)
+		self.area_topics_signal.emit(_areatopics.topics)

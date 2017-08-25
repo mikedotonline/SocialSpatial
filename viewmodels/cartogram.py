@@ -39,24 +39,33 @@ class Cartogram_ui(QtGui.QDockWidget, cartogram.Ui_Cartogram_dock):
 		self.preview_label.setPixmap(pixmap)
 
 	def run(self):
+		self.prepare_words()
+
 		s = shapefile.Shapefile('data\\van_nhoods\\van_nhoods.shp')
 		# Dummy list of wrods for debugging
 
 		#real words from postgres database
-		tableName = 'geoLDA_van_complete'
-		t = wordle.TopicWords(tableName)
-		words = t.words
+		# tableName = 'geoLDA_van_complete'
+		# t = wordle.TopicWords(tableName)
+		# words = t.words
 
-		#words = prepare_words(topcis)
+		# #words = prepare_words(topcis)
 
-		cloud = wordle.Shp_WordCloud(words,s)
-		cloud.show()
+		# cloud = wordle.Shp_WordCloud(words,s)
+		# cloud.show()
 
 
-	def prepare_words(self, _topicModel):
-		pass
+	def prepare_words(self):
+		
+		for model in self.areatopics:
+			#(word,link,weighted weight,parent polygon,topic family number:1-5)
+			for topic in model:
+				print topic
+
+
 		# augment the topic model data into a list of words that the wordle can sue
 
 	@QtCore.pyqtSlot(dict)
 	def on_areatopics(self,message):
 		self.areatopics = message
+		pp(self.areatopics)
