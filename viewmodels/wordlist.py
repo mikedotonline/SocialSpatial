@@ -25,7 +25,7 @@ class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
 
 		self.wordlistload_pushButton.clicked.connect(self.load_wordlist)
 		self.wordlistsave_pushButton.clicked.connect(self.save_wordlist)
-		self.AddNew_pushButton.clicked.connect(self.add_word)
+		self.AddNew_pushButton.clicked[()].connect(self.add_word)
 		self.removewords_pushButton.clicked.connect(self.remove_words)
 		self.wl = wordlist_model.Wordlist()	
 
@@ -78,31 +78,32 @@ class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
 		self.wl.json_write(self.wordlistfile_lineEdit.text())
 
 	# --------------------------------
+	# DEPRECIATED
 	# method:     	add_word
 	# description: 	use the word and tags (comma seperated) in the new word form to add a new word to the wordlist
 	# params:     	none
 	# returns:    	none
-	# --------------------------------
-	def add_word(self):
-		self.wordlist_tableWidget.setRowCount(self.wordlist_tableWidget.rowCount()+1)
-		newitem = QTableWidgetItem(self.NewWord_lineEdit.text())
-		self.wordlist_tableWidget.setItem(self.wordlist_tableWidget.rowCount()-1,0,newitem)
-		tags = self.NewTags_lineEdit.text().split(",")
-		col=1
-		if len(tags) > self.wordlist_tableWidget.columnCount()-1:
-				self.wordlist_tableWidget.setColumnCount(len(tags)+1)
-		for t in tags:			
-			newitem = QTableWidgetItem(t)			
-			self.wordlist_tableWidget.setItem(self.wordlist_tableWidget.rowCount()-1,col,newitem)
-			col+=1
-		print 'table rows:'+str(self.wordlist_tableWidget.rowCount())
+	# # --------------------------------
+	# def add_word(self):
+	# 	self.wordlist_tableWidget.setRowCount(self.wordlist_tableWidget.rowCount()+1)
+	# 	newitem = QTableWidgetItem(self.NewWord_lineEdit.text())
+	# 	self.wordlist_tableWidget.setItem(self.wordlist_tableWidget.rowCount()-1,0,newitem)
+	# 	tags = self.NewTags_lineEdit.text().split(",")
+	# 	col=1
+	# 	if len(tags) > self.wordlist_tableWidget.columnCount()-1:
+	# 			self.wordlist_tableWidget.setColumnCount(len(tags)+1)
+	# 	for t in tags:			
+	# 		newitem = QTableWidgetItem(t)			
+	# 		self.wordlist_tableWidget.setItem(self.wordlist_tableWidget.rowCount()-1,col,newitem)
+	# 		col+=1
+	# 	print 'table rows:'+str(self.wordlist_tableWidget.rowCount())
 
-		#add the word to the wl data model
-		l = []
-		for t in tags:
-			l.append(str(t))
-		self.wl.words[str(self.NewWord_lineEdit.text())]=l
-		#print self.wl.words
+	# 	#add the word to the wl data model
+	# 	l = []
+	# 	for t in tags:
+	# 		l.append(str(t))
+	# 	self.wl.words[str(self.NewWord_lineEdit.text())]=l
+	# 	#print self.wl.words
 
 	# --------------------------------
 	# method:     	remove_word
@@ -134,12 +135,34 @@ class Wordlist_ui(QtGui.QDockWidget, wordlist.Ui_wordlist_dockable):
 		self.raise_()
 
 	#add_words overload for adding in 
-	def add_word(self,in_list):
-		for i in in_list:
+	def add_word(self,in_list=None):
+		if not in_list== None:			
+			for i in in_list:
+				self.wordlist_tableWidget.setRowCount(self.wordlist_tableWidget.rowCount()+1)
+				newitem = QTableWidgetItem(i)
+				self.wordlist_tableWidget.setItem(self.wordlist_tableWidget.rowCount()-1,0,newitem)
+				self.wl.words[str(i)]=['']
+		else:
 			self.wordlist_tableWidget.setRowCount(self.wordlist_tableWidget.rowCount()+1)
-			newitem = QTableWidgetItem(i)
-			self.wordlist_tableWidget.setItem(self.wordlist_tableWidget.rowCount()-1,0,newitem)
-			self.wl.words[str(i)]=['']
+		newitem = QTableWidgetItem(self.NewWord_lineEdit.text())
+		self.wordlist_tableWidget.setItem(self.wordlist_tableWidget.rowCount()-1,0,newitem)
+		tags = self.NewTags_lineEdit.text().split(",")
+		col=1
+		if len(tags) > self.wordlist_tableWidget.columnCount()-1:
+				self.wordlist_tableWidget.setColumnCount(len(tags)+1)
+		for t in tags:			
+			newitem = QTableWidgetItem(t)			
+			self.wordlist_tableWidget.setItem(self.wordlist_tableWidget.rowCount()-1,col,newitem)
+			col+=1
+		print 'table rows:'+str(self.wordlist_tableWidget.rowCount())
+
+		#add the word to the wl data model
+		l = []
+		for t in tags:
+			l.append(str(t))
+		self.wl.words[str(self.NewWord_lineEdit.text())]=l
+		#print self.wl.words
+
 	
 	@QtCore.pyqtSlot()
 	def send_list(self):
