@@ -30,7 +30,7 @@ class TopicModel(object):
 
 	def get_topics (self, db_conn, _likeString, _spatialBoundary,_name):
 		self.social_data = Socialmedia.SocialMedia_posts()
-		lim="100"
+		lim="10000"
 		self.social_data.get_social_from_database(db_conn,_spatialBoundary,_likeString,lim)
 		print("%s tweets recieved, starting gensim operations" % len(self.social_data.posts))
 		model = self.do_gensim()

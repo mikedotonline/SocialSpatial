@@ -103,6 +103,7 @@ class Ui_wordlist_dockable(object):
         self.wordlistsave_pushButton.setText(_translate("wordlist_dockable", "Save", None))
         self.wordlistfile_lineEdit.setText(_translate("wordlist_dockable", "data\\masterlist.json", None))
         self.List.setTitle(_translate("wordlist_dockable", "Wordlist", None))
+        self.wordlist_tableWidget.setSortingEnabled(True)
         item = self.wordlist_tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("wordlist_dockable", "Word", None))
         item = self.wordlist_tableWidget.horizontalHeaderItem(1)

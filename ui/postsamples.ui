@@ -46,7 +46,7 @@
         <item row="1" column="0">
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>Max Resutls </string>
+           <string>Max Results </string>
           </property>
          </widget>
         </item>
@@ -64,6 +64,13 @@
          <widget class="QPushButton" name="search_pushButton">
           <property name="text">
            <string>Search</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QPushButton" name="copySQL_pushButton">
+          <property name="text">
+           <string>Copy SQL to Clipboard</string>
           </property>
          </widget>
         </item>

@@ -55,6 +55,9 @@
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
           <widget class="QTableWidget" name="wordlist_tableWidget">
+           <property name="sortingEnabled">
+            <bool>true</bool>
+           </property>
            <column>
             <property name="text">
              <string>Word</string>

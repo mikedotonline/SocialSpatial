@@ -73,7 +73,7 @@ class TopicModel_ui(QtGui.QDockWidget, topicmodel.Ui_TopicModel_DockWidget):
 			spatialBoundary = "ST_Contains(ST_TRANSFORM("+self.db_connection[1].areatable+"."+self.db_connection[1].areageom+",4326),"+self.db_connection[1].socialtable+"."+self.db_connection[1].socialgeom+")"
 			topics = topicModel.get_topics(self.db_connection,likeString,spatialBoundary,self.db_connection[1].areatable)							
 		else:	
-			selectString = "SELECT "+self.db_connection[1].arealabel+","+self.db_connection[1].areageom+" FROM "+self.db_connection[1].areatable+" limit 3" # get the areas that we are going to work with
+			selectString = "SELECT "+self.db_connection[1].arealabel+","+self.db_connection[1].areageom+" FROM "+self.db_connection[1].areatable#+" limit 3" # get the areas that we are going to work with
 			#logging.info("connecting to database")		
 			#logging.info("creating cursor")
 			#cursor for reading the nHoods from the tor_nhoods table

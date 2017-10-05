@@ -6,9 +6,15 @@ import models.wordlist_model as wordlist_model
 import models.databaseConnection_model as db_model
 import models.SocialMedia_model as socialmedia
 import json 
+import sys
 #import psycopg2
 
 import ui.postsamples as postsamples
+
+import logging #get some logging going to make it easier to debug
+logging.basicConfig(level=logging.INFO) #optional argument, filename="tk_freebase-explorer.log" and filemode='w'
+import warnings
+warnings.filterwarnings("ignore",category=DeprecationWarning)
 
 class PostSamples_ui(QtGui.QDockWidget, postsamples.Ui_PostSamples_DockWidget):
 	sendSocialMedia = QtCore.pyqtSignal(tuple)
@@ -18,10 +24,13 @@ class PostSamples_ui(QtGui.QDockWidget, postsamples.Ui_PostSamples_DockWidget):
 
 		self.search_pushButton.clicked.connect(self.search)
 		self.addToMap_pushButton.clicked.connect(self.addToMap)
+		self.copySQL_pushButton.clicked.connect(self.copySQL)
 
 		self.selectedWords = []
 		self.mapBoundary='' #once i connect the even handler of mouse wheel and mouse click
 		self.social_media = None
+
+
 
 	def search (self):
 		self.social_media = self.get_posts()
@@ -29,6 +38,16 @@ class PostSamples_ui(QtGui.QDockWidget, postsamples.Ui_PostSamples_DockWidget):
 		for i in self.social_media.posts:
 			self.results_listWidget.addItem(QString(i.text))
 			print(i.text)
+	
+	def copySQL (self):		
+		#app = QApplication(sys.argv)
+		myClipBoard = QApplication.clipboard()
+		#print('s= %s' self.form_sql)
+		s = QString(self.form_sql())
+		myClipBoard.setText(s)
+
+		logging.info('sql coppied to clipboard')
+
 
 
 	@QtCore.pyqtSlot()
@@ -45,15 +64,32 @@ class PostSamples_ui(QtGui.QDockWidget, postsamples.Ui_PostSamples_DockWidget):
 		self.sendSocialMedia.emit(s)
 
 
+	def likeString(self):
+		like_string =''
+		for w in self.selectedWords:
+			like_string+= str(self.db_connection[1].socialdata)+" LIKE (\'%"+w+"%\') OR "			
+		like_string = like_string[:-3]
 
+		return like_string
+	def form_sql(self):
+		if self.boundary_comboBox.currentText() == "Area Table":	
+			
+			spatialBoundary = "ST_Contains(ST_TRANSFORM("+self.db_connection[1].areatable+"."+self.db_connection[1].areageom+",4326),"+self.db_connection[1].socialtable+"."+self.db_connection[1].socialgeom+")"									
+			#selectString = "SELECT "+self.db_connection[1].socialdata+", ST_ASGEOJSON("+self.db_connection[1].socialgeom+"), "+self.db_connection[1].socialusername+" FROM "+self.db_connection[1].socialtable+", "+self.db_connection[1].areatable+" WHERE ("+likeString+") AND "+spatialBoundary+" LIMIT "+str(self.limit_lineEdit.text())		
+			sqlString = 'SELECT * FROM '+self.db_connection[1].socialtable+' where '+self.likeString()+' AND '+spatialBoundary
+		
+		else: 
+			sqlString = 'SELECT * FROM '+self.db_connection[1].socialtable+' where '+self.likeString()
+
+		#sqlString = 'SELECT * FROM '+self.db_connection[1].socialtable+' where '+self.likeString()+' AND '+spatialBoundary
+		
+
+		return sqlString
 
 
 	def get_posts(self):
 		
-		likeString =''
-		for w in self.selectedWords:
-			likeString+= str(self.db_connection[1].socialdata)+" LIKE (\'%"+w+"%\') OR "			
-		likeString = likeString[:-3]
+		likeString = self.likeString()
 
 		if self.boundary_comboBox.currentText() == "Area Table":	
 			
